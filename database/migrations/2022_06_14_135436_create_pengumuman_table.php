@@ -15,6 +15,10 @@ return new class extends Migration
     {
         Schema::create('pengumuman', function (Blueprint $table) {
             $table->id();
+            $table->string('judul');
+            $table->text('isi');
+            $table->string('file_url')->nullable();
+            $table->string('file_path')->nullable();
             $table->timestamps();
         });
     }
