@@ -162,5 +162,31 @@ class PengumumanServiceTest extends TestCase
 
     }
 
+    public function test_list_pengumuman()
+    {
+        Pengumuman::factory(20)->create();
+
+        $list = $this->pengumumanService->list();
+
+        self::assertSame(20, $list->count());
+
+        Pengumuman::factory()->create(['judul' => 'test']);
+
+        $search = $this->pengumumanService->list('test');
+
+        self::assertSame(1, $search->count());
+
+    }
+
+    public function test_detail_pengumuman()
+    {
+        $pengumuman = Pengumuman::factory()->create([]);
+
+        $result = $this->pengumumanService->show($pengumuman->id);
+
+        self::assertSame($pengumuman->judul, $result->judul);
+        self::assertSame(1, $result->count());
+    }
+
 
 }

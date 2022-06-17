@@ -6,6 +6,8 @@ use App\Exceptions\InvariantException;
 use App\Helper\Media;
 use App\Models\Pengumuman;
 use App\Services\PengumumanService;
+use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
 
 class PengumumanServiceImpl implements PengumumanService
 {
@@ -117,6 +119,20 @@ class PengumumanServiceImpl implements PengumumanService
         }catch (\Exception $exception) {
             throw new InvariantException($exception->getMessage());
         }
+
+        return $pengumuman;
+    }
+
+    function list(string $key = ''): Collection
+    {
+        $pengumuman = Pengumuman::where('judul', 'like', '%'.$key.'%')->get();
+
+        return $pengumuman;
+    }
+
+    function show(int $id): Pengumuman
+    {
+        $pengumuman = Pengumuman::find($id);
 
         return $pengumuman;
     }
