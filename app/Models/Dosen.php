@@ -21,4 +21,8 @@ class Dosen extends Model
     public function penelitian() {
         return $this->hasMany(Penelitian::class, 'owner', 'nidn');
     }
+
+    public function pengabdian() {
+        return $this->hasMany(Pengabdian::class, 'owner', 'nidn');
+    }
 }
