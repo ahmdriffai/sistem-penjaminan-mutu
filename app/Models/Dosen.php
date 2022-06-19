@@ -25,4 +25,8 @@ class Dosen extends Model
     public function pengabdian() {
         return $this->hasMany(Pengabdian::class, 'owner', 'nidn');
     }
+
+    public function paperIlmiah() {
+        return $this->hasMany(PaperIlmiah::class, 'owner', 'nidn');
+    }
 }

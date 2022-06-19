@@ -200,6 +200,7 @@ return [
         App\Providers\DosenServiceProvider::class,
         App\Providers\PenelitianServiceProvider::class,
         App\Providers\PengabdianServiceProvider::class,
+        App\Providers\PaperIlmiahServiceProvider::class,
 
 
         // Spatie laravel permission
