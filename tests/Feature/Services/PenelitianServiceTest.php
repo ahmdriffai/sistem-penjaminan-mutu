@@ -105,7 +105,8 @@ class PenelitianServiceTest extends TestCase
             'tanggal_mulai' => '2020-10-10',
             'tanggal_selesai' => '2021-10-10',
             'sumber_dana' => 'edit',
-            'jumlaah' => 100000
+            'jumlaah' => 100000,
+            'sebagai' => 'Peneliti 2',
         ]);
 
         $result = $this->penelitianService->update($request, $penelitian->id);
@@ -115,6 +116,7 @@ class PenelitianServiceTest extends TestCase
         self::assertNotSame($penelitian->tanggal_selesai, $result->tanggal_selesai);
         self::assertNotSame($penelitian->sumber_dana, $result->sumber_dana);
         self::assertNotSame($penelitian->jumlah, $result->jumlah);
+        self::assertNotSame($penelitian->sebagai, $result->sebagai);
         $this->assertDatabaseCount('penelitian', 1);
     }
 

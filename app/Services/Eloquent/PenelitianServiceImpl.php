@@ -66,6 +66,7 @@ class PenelitianServiceImpl implements PenelitianService
         $tanggalSelesai = $request->input('tanggal_selesai');
         $sumber_dana = $request->input('sumber_dana');
         $jumlah = $request->input('jumlah');
+        $sebagai = $request->input('sebagai');
 
         $penelitian = Penelitian::find($id);
 
@@ -76,6 +77,7 @@ class PenelitianServiceImpl implements PenelitianService
             $penelitian->tanggal_selesai= $tanggalSelesai;
             $penelitian->sumber_dana = $sumber_dana;
             $penelitian->jumlah = $jumlah;
+            $penelitian->sebagai = $sebagai;
             $penelitian->save();
             DB::commit();
         }catch (\Exception $exception) {
