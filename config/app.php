@@ -199,6 +199,7 @@ return [
         App\Providers\PengumumanServiceProvider::class,
         App\Providers\DosenServiceProvider::class,
         App\Providers\PenelitianServiceProvider::class,
+        App\Providers\PengabdianServiceProvider::class,
 
 
         // Spatie laravel permission
