@@ -12,4 +12,8 @@ class PenjaminanMutu extends Model
     protected $table = 'penjaminan_mutu';
 
     protected $fillable = ['nama', 'keterangan'];
+
+    public function dokumenMutu() {
+        return $this->hasMany(DokumenMutu::class, 'penjaminan_mutu_id', 'id');
+    }
 }
