@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('kode_dokumen');
             $table->string('nama');
             $table->integer('tahun');
-            $table->integer('deskripsi');
+            $table->text('deskripsi');
             $table->string('file_url')->nullable();
             $table->string('file_path')->nullable();
             $table->unsignedBigInteger('penjaminan_mutu_id');

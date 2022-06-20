@@ -43,7 +43,7 @@ class DokumenMutuServiceImpl implements DokumenMutuService
     {
         $paginate = DokumenMutu::where('kode_dokumen', 'like', '%' . $key . '%')
             ->orWhere('nama', 'like', '%' . $key . '%')
-            ->oderBy('created_at', 'DESC')
+            ->orderBy('created_at', 'DESC')
             ->paginate($size);
 
         return $paginate;
@@ -94,7 +94,6 @@ class DokumenMutuServiceImpl implements DokumenMutuService
     function addFile(int $id, $file): DokumenMutu
     {
         $dokumenMutu = DokumenMutu::find($id);
-
 
         try {
             $dataFile = $this->uploads($file, 'dokumen-mutu/');
