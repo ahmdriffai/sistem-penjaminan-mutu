@@ -29,4 +29,8 @@ class Dosen extends Model
     public function paperIlmiah() {
         return $this->hasMany(PaperIlmiah::class, 'owner', 'nidn');
     }
+
+    public function user() {
+        return $this->belongsTo(User::class, 'user_id', 'id', 'users');
+    }
 }

@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Dosen;
 use App\Models\User;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
@@ -16,6 +17,8 @@ class CreateUserSeeder extends Seeder
      */
     public function run()
     {
+        $dosenObj = Dosen::factory()->create();
+
         $admin = User::create([
             'name' => 'admin',
             'email' => 'admin@gmail.com',
@@ -28,11 +31,14 @@ class CreateUserSeeder extends Seeder
             'password' => bcrypt('rahasia'),
         ]);
 
+        $admin->dosen()->save($dosenObj);
+
         $roleAdmin = Role::create(['name' => 'admin']);
         $roleDosen = Role::create(['name' => 'dosen']);
 
 
         $admin->assignRole([$roleAdmin->id]);
         $dosen->assignRole([$roleDosen->id]);
+
     }
 }

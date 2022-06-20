@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::middleware(['role:dosen'])->group(function (){
-    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth'])->group(function (){
+    Route::resource('/pengumuman', \App\Http\Controllers\PengumumanController::class);
+    Route::resource('/penelitian', \App\Http\Controllers\PenelitianController::class);
 });
