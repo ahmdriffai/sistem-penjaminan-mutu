@@ -4,7 +4,7 @@
     class="light-style layout-menu-fixed"
     dir="ltr"
     data-theme="theme-default"
-    data-assets-path="../assets/"
+    data-assets-path="{{ asset('/') }}"
     data-template="vertical-menu-template-free"
 >
 <head>
@@ -32,6 +32,8 @@
                     <h3 class="fw-bold py-3 mb-4">
                         <span class="text-muted fw-light">{{ $title ?? '' }}
                     </h3>
+
+                    @include('layouts.components.validation')
 
                     @yield('content')
                 </div>

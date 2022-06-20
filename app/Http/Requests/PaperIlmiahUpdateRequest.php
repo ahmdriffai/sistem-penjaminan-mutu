@@ -13,7 +13,7 @@ class PaperIlmiahUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,15 @@ class PaperIlmiahUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'judul' => 'required',
+            'tahun' => 'required',
+            'bulan' => 'required',
+            'media' => 'required',
+            'issn' => 'required',
+            'sebagai' => 'required',
+            'indexs' => 'required',
+            'kriteria' => 'required',
+            'link' => 'required',
         ];
     }
 }

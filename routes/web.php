@@ -24,4 +24,5 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('/pengumuman', \App\Http\Controllers\PengumumanController::class);
     Route::resource('/penelitian', \App\Http\Controllers\PenelitianController::class)->except(['show']);
     Route::resource('/pengabdian', \App\Http\Controllers\PengabdianController::class)->except(['show']);
+    Route::resource('/paper-ilmiah', \App\Http\Controllers\PaperIlmiahController::class)->except(['show']);
 });

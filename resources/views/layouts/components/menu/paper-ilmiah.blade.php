@@ -16,8 +16,8 @@
     </a>
 </li>
 
-<li class="menu-item">
-    <a href="index.html" class="menu-link">
+<li class="menu-item {{ Route::is('paper-ilmiah.*') ? 'active' : '' }}">
+    <a href="{{ route('paper-ilmiah.index') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bx-file"></i>
         <div data-i18n="Analytics">Paper Ilmiah</div>
     </a>
