@@ -13,7 +13,7 @@ class PengabdianUpdateRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,12 @@ class PengabdianUpdateRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'judul' => 'required',
+            'tanggal_mulai' => 'required',
+            'tanggal_selesai' => 'required',
+            'sumber_dana' => 'required',
+            'jumlah' => 'required',
+            'sebagai' => 'required',
         ];
     }
 }

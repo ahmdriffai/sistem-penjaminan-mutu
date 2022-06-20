@@ -22,5 +22,6 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::middleware(['auth'])->group(function (){
     Route::resource('/pengumuman', \App\Http\Controllers\PengumumanController::class);
-    Route::resource('/penelitian', \App\Http\Controllers\PenelitianController::class);
+    Route::resource('/penelitian', \App\Http\Controllers\PenelitianController::class)->except(['show']);
+    Route::resource('/pengabdian', \App\Http\Controllers\PengabdianController::class)->except(['show']);
 });

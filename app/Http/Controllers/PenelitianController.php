@@ -53,12 +53,6 @@ class PenelitianController extends Controller
         }
     }
 
-
-    public function show($id)
-    {
-        //
-    }
-
     public function edit($id)
     {
         $penelitian = Penelitian::find($id);

@@ -52,11 +52,11 @@
                         <td>{{ $value->sebagai }}</td>
                         <td><span class="badge bg-label-primary me-1">Active</span></td>
                         <td class="d-flex">
-                            <a class="btn btn-sm btn-primary mx-1" href="{{ route('penelitian.edit', $value->id) }}">
+                            <a class="btn btn-sm btn-primary mx-1" href="{{ route('pengabdian.edit', $value->id) }}">
                                 <i class="bx bx-edit-alt me-1"></i> Edit
                             </a>
                             <div>
-                                {!! Form::open(['route' => ['penelitian.destroy', $value->id], 'method' => 'DELETE']) !!}
+                                {!! Form::open(['route' => ['pengabdian.destroy', $value->id], 'method' => 'DELETE']) !!}
                                 <button type="submit" class="btn btn-sm btn-danger">
                                     <i class="bx bx-trash me-1"></i> Delete
                                 </button>

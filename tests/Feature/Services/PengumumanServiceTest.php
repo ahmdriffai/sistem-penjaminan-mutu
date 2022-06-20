@@ -79,9 +79,7 @@ class PengumumanServiceTest extends TestCase
 
     public function test_hapus_pengumuman_dengan_file_test() {
         $file = UploadedFile::fake()->create('file.pdf');
-
         $uploads = $this->uploads($file, 'test/');
-
         $pengumuman = Pengumuman::factory()->create(['file_path' => public_path('storage/'. $uploads['filePath'])]);
 
         self::assertFileExists($pengumuman->file_path);
@@ -166,9 +164,9 @@ class PengumumanServiceTest extends TestCase
     {
         Pengumuman::factory(20)->create();
 
-        $list = $this->pengumumanService->list();
+        $list = $this->pengumumanService->list('', 10);
 
-        self::assertSame(20, $list->count());
+        self::assertSame(10, $list->count());
 
         Pengumuman::factory()->create(['judul' => 'test']);
 
@@ -187,6 +185,5 @@ class PengumumanServiceTest extends TestCase
         self::assertSame($pengumuman->judul, $result->judul);
         self::assertSame(1, $result->count());
     }
-
 
 }

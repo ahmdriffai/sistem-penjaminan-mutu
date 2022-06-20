@@ -8,7 +8,7 @@ use Illuminate\Support\Collection;
 
 interface PengumumanService
 {
-    function list(string $key): Collection;
+    function list(string $key, $size): LengthAwarePaginator;
     function show(int $id): Pengumuman;
     function add(string $judul, string $isi): Pengumuman;
     function edit(int $id, string $judul, string $isi): Pengumuman;
