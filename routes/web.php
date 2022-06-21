@@ -32,3 +32,13 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('/audit', \App\Http\Controllers\AuditController::class)->except(['show']);
     Route::resource('/file-dokumen', \App\Http\Controllers\FileDokumenController::class)->only(['store', 'destroy']);
 });
+
+
+Route::get('/test-sendmail', function () {
+   $email = 'rifai0850@gmail.com';
+   $password = 'apa hayo';
+
+   dispatch(new \App\Jobs\SendEmailJob($email, $password));
+
+   dd('done');
+});
