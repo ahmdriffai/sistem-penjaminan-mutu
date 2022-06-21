@@ -33,6 +33,7 @@
                         <span class="text-muted fw-light">{{ $title ?? '' }}
                     </h3>
 
+                    @include('layouts.components.alert')
                     @include('layouts.components.validation')
 
                     @yield('content')

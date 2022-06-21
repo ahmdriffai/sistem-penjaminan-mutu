@@ -18,4 +18,8 @@ class DokumenMutu extends Model
     public function penjaminanMutu() {
         return $this->belongsTo(PenjaminanMutu::class, 'penjaminan_mutu_id', 'id', 'penjaminan_mutu');
     }
+
+    public function fileDokumen() {
+        return $this->hasMany(FileDokumen::class, 'dokumen_mutu_id', 'id');
+    }
 }

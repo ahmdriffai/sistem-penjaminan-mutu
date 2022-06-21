@@ -28,4 +28,6 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('/penjaminan-mutu', \App\Http\Controllers\PenjaminanMutuController::class)
         ->middleware('role:admin')
         ->except(['show']);
+    Route::resource('/dokumen-mutu', \App\Http\Controllers\DokumenMutuController::class);
+    Route::resource('/file-dokumen', \App\Http\Controllers\FileDokumenController::class)->only(['store', 'destroy']);
 });

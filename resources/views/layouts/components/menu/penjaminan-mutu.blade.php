@@ -4,8 +4,15 @@
 
 <li class="menu-item {{ Route::is('penjaminan-mutu.*') ? 'active' : '' }}">
     <a href="{{ route('penjaminan-mutu.index') }}" class="menu-link">
-        <i class="menu-icon tf-icons bx bxs-file-plus"></i>
+        <i class="menu-icon tf-icons bx bxs-archive"></i>
         <div data-i18n="Analytics">Item Penjaminan Mutu</div>
+    </a>
+</li>
+
+<li class="menu-item {{ Route::is('dokumen-mutu.*') ? 'active' : '' }}">
+    <a href="{{ route('dokumen-mutu.index') }}" class="menu-link">
+        <i class="menu-icon tf-icons bx bxs-file-archive"></i>
+        <div data-i18n="Analytics">Dok. Penjaminan Mutu</div>
     </a>
 </li>
 

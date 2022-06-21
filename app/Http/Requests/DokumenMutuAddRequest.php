@@ -13,7 +13,7 @@ class DokumenMutuAddRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,11 @@ class DokumenMutuAddRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'kode_dokumen' => 'required',
+            'nama' => 'required',
+            'tahun' => 'required',
+            'deskripsi' => 'required',
+            'penjaminan_mutu_id' => 'required',
         ];
     }
 }

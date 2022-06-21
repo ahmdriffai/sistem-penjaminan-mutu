@@ -13,7 +13,7 @@ class FileDokumenAddRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,8 @@ class FileDokumenAddRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nama_file' => 'required',
+            'file' => 'required'
         ];
     }
 }
