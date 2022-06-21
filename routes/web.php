@@ -25,4 +25,7 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('/penelitian', \App\Http\Controllers\PenelitianController::class)->except(['show']);
     Route::resource('/pengabdian', \App\Http\Controllers\PengabdianController::class)->except(['show']);
     Route::resource('/paper-ilmiah', \App\Http\Controllers\PaperIlmiahController::class)->except(['show']);
+    Route::resource('/penjaminan-mutu', \App\Http\Controllers\PenjaminanMutuController::class)
+        ->middleware('role:admin')
+        ->except(['show']);
 });

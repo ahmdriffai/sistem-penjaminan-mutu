@@ -2,8 +2,8 @@
     <span class="menu-header-text">Penjaminan Mutu</span>
 </li>
 
-<li class="menu-item">
-    <a href="" class="menu-link">
+<li class="menu-item {{ Route::is('penjaminan-mutu.*') ? 'active' : '' }}">
+    <a href="{{ route('penjaminan-mutu.index') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bxs-file-plus"></i>
         <div data-i18n="Analytics">Item Penjaminan Mutu</div>
     </a>
