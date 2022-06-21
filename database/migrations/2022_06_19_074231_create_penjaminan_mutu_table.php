@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('penjaminan_mutu', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->string('keterangan');
+            $table->text('keterangan');
             $table->timestamps();
         });
     }
