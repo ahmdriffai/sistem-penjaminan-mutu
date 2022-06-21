@@ -26,7 +26,6 @@ class UserAddRequest extends FormRequest
         return [
             'email' => 'required|email|unique:users,email',
             'roles'=> 'required',
-            'password' => 'required|same:confirm-password',
             'dosen_id' => 'required',
         ];
     }
