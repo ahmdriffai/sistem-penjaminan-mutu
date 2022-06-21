@@ -4,6 +4,8 @@ namespace App\Services\Eloquent;
 
 use App\Exceptions\InvariantException;
 use App\Helper\Media;
+use App\Http\Requests\DosenAddRequest;
+use App\Http\Requests\DosenUpdateRequest;
 use App\Models\Dosen;
 use App\Services\DosenService;
 use App\UseCase\DosenUC;
@@ -14,19 +16,27 @@ class DosenServiceImpl implements DosenService
 {
 
     use Media;
-    function add(DosenUC $request): Dosen
+    function add(DosenAddRequest $request): Dosen
     {
+        $nidn = $request->input('nidn');
+        $nama = $request->input('nama');
+        $tempatLahir = $request->input('tempat_lahir');
+        $tanggalLahir = $request->input('tanggal_lahir');
+        $nik = $request->input('nik');
+        $jenisKelamin = $request->input('jenis_kelamin');
+        $nomerHp = $request->input('nomer_hp');
+        $alamat = $request->input('alamat');
         try {
             DB::beginTransaction();
             $dosen = new Dosen([
-                'nidn' => $request->getNidn(),
-                'nama' => $request->getNama(),
-                'tempat_lahir' => $request->getTempatLahir(),
-                'tanggal_lahir' => $request->getTanggalLahir(),
-                'nik' => $request->getNik(),
-                'jenis_kelamin' => $request->getJenisKelamin(),
-                'nomer_hp' => $request->getNomerHp(),
-                'alamat' => $request->getAlamat(),
+                'nidn' => $nidn,
+                'nama' => $nama,
+                'tempat_lahir' => $tempatLahir,
+                'tanggal_lahir' => $tanggalLahir,
+                'nik' => $nik,
+                'jenis_kelamin' => $jenisKelamin,
+                'nomer_hp' => $nomerHp,
+                'alamat' => $alamat,
                 'foto_url' => null,
                 'foto_path' => null,
                 'user_id' => null
@@ -48,18 +58,27 @@ class DosenServiceImpl implements DosenService
         return $dosen;
     }
 
-    function update(DosenUC $request, string $nidn): Dosen
+    function update(DosenUpdateRequest $request, string $nidn): Dosen
     {
+
+        $nama = $request->input('nama');
+        $tempatLahir = $request->input('tempat_lahir');
+        $tanggalLahir = $request->input('tanggal_lahir');
+        $nik = $request->input('nik');
+        $jenisKelamin = $request->input('jenis_kelamin');
+        $nomerHp = $request->input('nomer_hp');
+        $alamat = $request->input('alamat');
+
         $dosen = Dosen::find($nidn);
+
         try {
-            $dosen->nama = $request->getNama();
-            $dosen->tempat_lahir = $request->getTempatLahir();
-            $dosen->tanggal_lahir = $request->getTanggalLahir();
-            $dosen->nik = $request->getNik();
-            $dosen->jenis_kelamin = $request->getJenisKelamin();
-            $dosen->nomer_hp = $request->getNomerHp();
-            $dosen->alamat = $request->getAlamat();
-            $dosen->alamat = $request->getAlamat();
+            $dosen->nama = $nama;
+            $dosen->tempat_lahir = $tempatLahir;
+            $dosen->tanggal_lahir = $tanggalLahir;
+            $dosen->nik = $nik;
+            $dosen->jenis_kelamin = $jenisKelamin;
+            $dosen->nomer_hp = $nomerHp;
+            $dosen->alamat = $alamat;
             $dosen->save();
         }catch (\Exception $exception) {
             throw new InvariantException($exception->getMessage());

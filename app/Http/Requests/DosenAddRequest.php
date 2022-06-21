@@ -13,7 +13,7 @@ class DosenAddRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,14 @@ class DosenAddRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'nidn' => 'required',
+            'nama' => 'required',
+            'tempat_lahir' => 'required',
+            'tanggal_lahir' => 'required',
+            'nik' => 'required',
+            'jenis_kelamnin' => 'required',
+            'nomer_hp' => 'required',
+            'alamat' => 'required',
         ];
     }
 }

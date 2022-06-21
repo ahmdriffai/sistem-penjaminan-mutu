@@ -3,6 +3,8 @@
 namespace Tests\Feature\Services;
 
 use App\Helper\Media;
+use App\Http\Requests\DosenAddRequest;
+use App\Http\Requests\DosenUpdateRequest;
 use App\Models\Dosen;
 use App\Services\DosenService;
 use App\UseCase\DosenUC;
@@ -32,18 +34,18 @@ class DosenServiceTest extends TestCase
 
     public function test_tambah_dosen()
     {
-        $dosenUC = new DosenUC(
-            '111',
-            'test',
-            'batang',
-            '2001-07-01',
-            '1607010001',
-            'L',
-            '08544983934',
-            'rejosari, pranten, bawang, batang',
-        );
+        $request = new DosenAddRequest([
+            'nidn' => '111',
+            'nama' => 'test',
+            'tempat_lahir' => 'batang',
+            'tanggal_lahir' => '2001-07-01',
+            'nik' => '1607010001',
+            'jenis_kelamin' => 'L',
+            'nomer_hp' => '08544983934',
+            'alamat' => 'rejosari, pranten, bawang, batang',
+        ]);
 
-        $this->dosenService->add($dosenUC);
+        $this->dosenService->add($request);
 
         $this->assertDatabaseCount('dosen', 1);
 
@@ -82,18 +84,17 @@ class DosenServiceTest extends TestCase
     {
         $dosen = Dosen::factory()->create();
 
-        $dosenUC = new DosenUC(
-            '111',
-            'test',
-            'batang',
-            '2001-07-01',
-            '1607010001',
-            'P',
-            '08544983934',
-            'rejosari, pranten, bawang, batang',
-        );
+        $request = new DosenUpdateRequest([
+            'nama' => 'test',
+            'tempat_lahir' => 'batang',
+            'tanggal_lahir' => '2001-07-01',
+            'nik' => '1607010001',
+            'jenis_kelamin' => 'P',
+            'nomer_hp' => '08544983934',
+            'alamat' => 'rejosari, pranten, bawang, batang',
+        ]);
 
-        $result = $this->dosenService->update($dosenUC, $dosen->nidn);
+        $result = $this->dosenService->update($request, $dosen->nidn);
 
         self::assertNotSame($dosen->nama, $result->nama);
         self::assertNotSame($dosen->tempat_lahir, $result->tempat_lahir);
