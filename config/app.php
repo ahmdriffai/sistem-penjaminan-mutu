@@ -204,7 +204,7 @@ return [
         App\Providers\PenjaminanMutuProvider::class,
         App\Providers\DokumenMutuServiceProvider::class,
         App\Providers\FileDokumenServiceProvider::class,
-
+        App\Providers\AuditServiceProvider::class,
 
         // Spatie laravel permission
         Spatie\Permission\PermissionServiceProvider::class,
