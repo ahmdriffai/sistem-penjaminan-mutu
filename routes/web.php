@@ -29,5 +29,6 @@ Route::middleware(['auth'])->group(function (){
         ->middleware('role:admin')
         ->except(['show']);
     Route::resource('/dokumen-mutu', \App\Http\Controllers\DokumenMutuController::class);
+    Route::resource('/audit', \App\Http\Controllers\AuditController::class)->except(['show']);
     Route::resource('/file-dokumen', \App\Http\Controllers\FileDokumenController::class)->only(['store', 'destroy']);
 });
