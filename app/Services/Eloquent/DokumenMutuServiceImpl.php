@@ -4,6 +4,8 @@ namespace App\Services\Eloquent;
 
 use App\Exceptions\InvariantException;
 use App\Helper\Media;
+use App\Http\Requests\DokumenMutuAddRequest;
+use App\Http\Requests\DokumenMutuUpdateRequest;
 use App\Models\DokumenMutu;
 use App\Models\PenjaminanMutu;
 use App\Services\DokumenMutuService;
@@ -13,15 +15,18 @@ use Illuminate\Support\Facades\DB;
 class DokumenMutuServiceImpl implements DokumenMutuService
 {
 
-    use Media;
-
-    function add($kodeDokument, $nama, $tahun, $deskripsi, $penjaminan_mutu_id) : DokumenMutu
+    function add(DokumenMutuAddRequest $request, $penjaminan_mutu_id) : DokumenMutu
     {
+        $kodeDokumen = $request->input('kode_dokumen');
+        $nama = $request->input('nama');
+        $tahun = $request->input('tahun');
+        $deskripsi = $request->input('deskripsi');
         $penjaminanMutu = PenjaminanMutu::find($penjaminan_mutu_id);
+
         try {
             DB::beginTransaction();
             $dokumenMutu = new DokumenMutu([
-                'kode_dokumen' => $kodeDokument,
+                'kode_dokumen' => $kodeDokumen,
                 'nama' => $nama,
                 'tahun' => $tahun,
                 'deskripsi' => $deskripsi
@@ -49,8 +54,13 @@ class DokumenMutuServiceImpl implements DokumenMutuService
         return $paginate;
     }
 
-    function update($kodeDokumen, $nama, $tahun, $deskripsi, $penjaminan_mutu_id, int $id): DokumenMutu
+    function update(DokumenMutuUpdateRequest $request, $penjaminan_mutu_id, int $id): DokumenMutu
     {
+        $kodeDokumen = $request->input('kode_dokumen');
+        $nama = $request->input('nama');
+        $tahun = $request->input('tahun');
+        $deskripsi = $request->input('deskripsi');
+
         $dokumenMutu = DokumenMutu::find($id);
         try {
             DB::beginTransaction();
@@ -88,68 +98,6 @@ class DokumenMutuServiceImpl implements DokumenMutuService
     function show(int $id): DokumenMutu
     {
         $dokumenMutu = DokumenMutu::find($id);
-        return $dokumenMutu;
-    }
-
-    function addFile(int $id, $file): DokumenMutu
-    {
-        $dokumenMutu = DokumenMutu::find($id);
-
-        try {
-            $dataFile = $this->uploads($file, 'dokumen-mutu/');
-            $fileUrl = asset('storage/'. $dataFile['filePath']);
-            $filePath = public_path('storage/'. $dataFile['filePath']);
-
-            $dokumenMutu->file_url = $fileUrl;
-            $dokumenMutu->file_path = $filePath;
-            $dokumenMutu->save();
-        }catch (\Exception $exception) {
-            throw new InvariantException($exception->getMessage());
-        }
-
-        return $dokumenMutu;
-    }
-
-    function updateFile(int $id, $file): DokumenMutu
-    {
-        $dokumenMutu = DokumenMutu::find($id);
-
-        try {
-            if ($dokumenMutu->file_url != null || $dokumenMutu->file_path != null) {
-                unlink($dokumenMutu->file_path);
-            }
-
-            $dataFile = $this->uploads($file, 'dokumen-mutu/');
-            $filePath = public_path('storage/'. $dataFile['filePath']);
-            $fileUrl = asset('storage/'. $dataFile['filePath']);
-
-            $dokumenMutu->file_path = $filePath;
-            $dokumenMutu->file_url = $fileUrl;
-            $dokumenMutu->save();
-
-        }catch (\Exception $exception) {
-            throw new InvariantException($exception->getMessage());
-        }
-
-        return $dokumenMutu;
-    }
-
-    function deleteFile(int $id): DokumenMutu
-    {
-        $dokumenMutu = DokumenMutu::find($id);
-
-        try {
-            if ($dokumenMutu->file_url != null || $dokumenMutu->file_path != null) {
-                unlink($dokumenMutu->file_path);
-            }
-
-            $dokumenMutu->file_url = null;
-            $dokumenMutu->file_path = null;
-            $dokumenMutu->save();
-        }catch (\Exception $exception) {
-            throw new InvariantException($exception->getMessage());
-        }
-
         return $dokumenMutu;
     }
 }

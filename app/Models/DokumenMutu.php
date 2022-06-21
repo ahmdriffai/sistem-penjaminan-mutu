@@ -12,7 +12,7 @@ class DokumenMutu extends Model
     protected $table = 'dokumen_mutu';
 
     protected $fillable = [
-        'kode_dokumen', 'nama', 'tahun', 'deskripsi', 'file_url', 'file_path', 'penjaminan_mutu_id'
+        'kode_dokumen', 'nama', 'tahun', 'deskripsi', 'penjaminan_mutu_id'
     ];
 
     public function penjaminanMutu() {

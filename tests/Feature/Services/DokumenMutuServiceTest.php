@@ -3,6 +3,8 @@
 namespace Tests\Feature\Services;
 
 use App\Helper\Media;
+use App\Http\Requests\DokumenMutuAddRequest;
+use App\Http\Requests\DokumenMutuUpdateRequest;
 use App\Models\DokumenMutu;
 use App\Models\PenjaminanMutu;
 use App\Services\DokumenMutuService;
@@ -13,7 +15,7 @@ use Tests\TestCase;
 
 class DokumenMutuServiceTest extends TestCase
 {
-    use RefreshDatabase, WithFaker, Media;
+    use RefreshDatabase, Media;
 
     private DokumenMutuService $dokumenMutuService;
 
@@ -32,19 +34,22 @@ class DokumenMutuServiceTest extends TestCase
     {
         $penjaminanMutu = PenjaminanMutu::factory()->create();
 
-        $kodeDokumen = 'DOC-029098';
-        $nama = 'SOP Tahun 2020';
-        $tahun = 2022;
-        $deskripsi = $this->faker->text();
+        $request = new DokumenMutuAddRequest([
+            'kode_dokumen' => 'DOC-029098',
+            'nama' => 'SOP Tahun 2020',
+            'tahun' => 2022,
+            'deskripsi' => 'test deskripsi',
+        ]);
 
-        $this->dokumenMutuService->add($kodeDokumen, $nama, $tahun, $deskripsi, $penjaminanMutu->id);
+
+        $this->dokumenMutuService->add($request, $penjaminanMutu->id);
 
         $this->assertDatabaseCount('dokumen_mutu', 1);
         $this->assertDatabaseHas('dokumen_mutu', [
-            'kode_dokumen' => $kodeDokumen,
-            'nama' => $nama,
-            'tahun' => $tahun,
-            'deskripsi' => $deskripsi,
+            'kode_dokumen' => 'DOC-029098',
+            'nama' => 'SOP Tahun 2020',
+            'tahun' => 2022,
+            'deskripsi' => 'test deskripsi',
             'penjaminan_mutu_id' => $penjaminanMutu->id
         ]);
     }
@@ -72,16 +77,16 @@ class DokumenMutuServiceTest extends TestCase
         $dokumentMutu = DokumenMutu::factory()->create();
         $penjaminaMutu = PenjaminanMutu::factory()->create();
 
-        $kodeDokumen = 'kode-update-test';
-        $nama = 'nama update';
-        $tahun = 2050;
-        $deskripsi = 'deskripsi test';
+        $request = new DokumenMutuUpdateRequest([
+            'kode_dokumen' => 'kode-update-test',
+            'nama' => 'nama update',
+            'tahun' => 2050,
+            'deskripsi' => 'deskripsi test',
+        ]);
+
 
         $result = $this->dokumenMutuService->update(
-            $kodeDokumen,
-            $nama,
-            $tahun,
-            $deskripsi,
+            $request,
             $penjaminaMutu->id,
             $dokumentMutu->id
         );
@@ -94,7 +99,7 @@ class DokumenMutuServiceTest extends TestCase
         self::assertNotSame($dokumentMutu->penjaminan_mutu_id, $result->penjaminan_mutu_id);
     }
 
-    public function test_delete_dokumen_mutu_without_file()
+    public function test_delete_dokumen_mutu_()
     {
         $dokumenMutu = DokumenMutu::factory()->create();
 
@@ -105,94 +110,8 @@ class DokumenMutuServiceTest extends TestCase
         $this->assertDatabaseCount('dokumen_mutu', 0);
     }
 
-    public function test_delete_dokumen_mutu_with_file()
-    {
-        $file = UploadedFile::fake()->create('file.pdf');
-        $uploads = $this->uploads($file, 'test/');
-        $dokumenMutu = DokumenMutu::factory()->create(['file_path' => public_path('storage/'. $uploads['filePath'])]);
 
-        self::assertFileExists($dokumenMutu->file_path);
-        $this->assertDatabaseCount('dokumen_mutu', 1);
-
-        $this->dokumenMutuService->delete($dokumenMutu->id);
-
-        $this->assertDatabaseCount('dokumen_mutu', 0);
-        self::assertFileDoesNotExist($dokumenMutu->file_path);
-
-    }
-
-    public function test_add_file_dokumen_mutu()
-    {
-        $dokumenMutu = DokumenMutu::factory()->create();
-
-        $file = UploadedFile::fake()->create('file.pdf');
-
-        $result = $this->dokumenMutuService->addFile($dokumenMutu->id, $file);
-
-        $this->assertDatabaseCount('dokumen_mutu', 1);
-        $this->assertDatabaseHas('dokumen_mutu', [
-            'file_path' => $result->file_path,
-            'file_url' => $result->file_url,
-        ]);
-
-        self::assertFileExists($result->file_path);
-
-        @unlink($result->file_path);
-    }
-
-    public function test_delete_file_success()
-    {
-        $file = UploadedFile::fake()->create('file.pdf');
-        $uploads = $this->uploads($file, 'test/');
-        $dokumenMutu = DokumenMutu::factory()->create([
-            'file_path' => public_path('storage/' . $uploads['filePath']),
-            'file_url' => 'url'
-        ]);
-
-        self::assertFileExists($dokumenMutu->file_path);
-        $this->assertDatabaseCount('dokumen_mutu', 1);
-
-        $this->dokumenMutuService->deleteFile($dokumenMutu->id, $file);
-
-        $this->assertDatabaseCount('dokumen_mutu', 1);
-        $this->assertDatabaseHas('dokumen_mutu', [
-            'file_path' => null,
-            'file_url' => null,
-        ]);
-        self::assertFileDoesNotExist($dokumenMutu->file_path);
-
-    }
-
-    public function test_update_file_penjaminan_mutu_success()
-    {
-        $file = UploadedFile::fake()->create('file.pdf');
-        $uploads = $this->uploads($file, 'test/');
-        $dokumenMutu = DokumenMutu::factory()->create([
-            'file_path' => public_path('storage/' . $uploads['filePath']),
-            'file_url' => 'url'
-        ]);
-
-
-        self::assertFileExists($dokumenMutu->file_path);
-        $this->assertDatabaseCount('dokumen_mutu', 1);
-
-        $newFile = UploadedFile::fake()->create('file.pdf');
-        $result = $this->dokumenMutuService->updateFile($dokumenMutu->id, $newFile);
-
-        $this->assertDatabaseCount('dokumen_mutu', 1);
-
-        self::assertFileDoesNotExist($dokumenMutu->file_path);
-
-        self::assertFileExists($result->file_path);
-
-        self::assertNotSame($dokumenMutu->file_path , $result->file_path);
-        self::assertNotSame($dokumenMutu->file_url , $result->file_url);
-
-        @unlink($result->file_path);
-
-    }
-
-    public function test_detail_pengumuman()
+    public function test_detail_penjaminan_mutu()
     {
         $dokumenMutu = DokumenMutu::factory()->create([]);
 

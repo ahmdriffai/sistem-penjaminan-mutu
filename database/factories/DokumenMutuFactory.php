@@ -22,8 +22,6 @@ class DokumenMutuFactory extends Factory
             'nama' => $this->faker->name(),
             'tahun' => $this->faker->year(),
             'deskripsi' => $this->faker->text(),
-            'file_url' => null,
-            'file_path' => null,
             'penjaminan_mutu_id' => PenjaminanMutu::factory()->create()->id
         ];
     }

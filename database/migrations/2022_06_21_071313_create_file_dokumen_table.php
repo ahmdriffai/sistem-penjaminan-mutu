@@ -13,15 +13,15 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('dokumen_mutu', function (Blueprint $table) {
+        Schema::create('file_dokumen', function (Blueprint $table) {
             $table->id();
-            $table->string('kode_dokumen');
-            $table->string('nama');
-            $table->integer('tahun');
-            $table->text('deskripsi');
-            $table->unsignedBigInteger('penjaminan_mutu_id');
-            $table->foreign('penjaminan_mutu_id')
-                ->references('id')->on('penjaminan_mutu');
+            $table->string('nama_file');
+            $table->string('file_url')->nullable();
+            $table->string('file_path')->nullable();
+            $table->string('format');
+            $table->unsignedBigInteger('dokumen_mutu_id');
+            $table->foreign('dokumen_mutu_id')
+                ->references('id')->on('dokumen_mutu');
             $table->timestamps();
         });
     }
@@ -33,6 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('dokumen_mutu');
+        Schema::dropIfExists('file_dokumen');
     }
 };
