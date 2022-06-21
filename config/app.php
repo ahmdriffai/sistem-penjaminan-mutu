@@ -203,6 +203,7 @@ return [
         App\Providers\PaperIlmiahServiceProvider::class,
         App\Providers\PenjaminanMutuProvider::class,
         App\Providers\DokumenMutuServiceProvider::class,
+        App\Providers\FileDokumenServiceProvider::class,
 
 
         // Spatie laravel permission
