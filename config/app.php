@@ -205,6 +205,7 @@ return [
         App\Providers\DokumenMutuServiceProvider::class,
         App\Providers\FileDokumenServiceProvider::class,
         App\Providers\AuditServiceProvider::class,
+        App\Providers\UserServiceProvider::class,
 
         // Spatie laravel permission
         Spatie\Permission\PermissionServiceProvider::class,
