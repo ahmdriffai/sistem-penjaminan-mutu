@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\InvariantException;
+use App\Http\Requests\PengumumanAddRequest;
 use App\Models\Pengumuman;
 use App\Services\PengumumanService;
 use Illuminate\Http\Request;
@@ -9,6 +11,8 @@ use Illuminate\Pagination\LengthAwarePaginator;
 
 class PengumumanController extends Controller
 {
+    private $title = 'Pengumuman';
+
     private PengumumanService $pengumumanService;
 
     public function __construct(PengumumanService $pengumumanService)
@@ -20,30 +24,33 @@ class PengumumanController extends Controller
 
     public function index(Request $request)
     {
-        $key = $request->query('key');
-        $pengumuman = $this->pengumumanService->list($key = '', 100);
-        return response()->view('pengumuman.index', compact('pengumuman'));
+        $title = $this->title;
+        $key = $request->query('key') ?? '';
+        $size = $request->query('size') ?? 10;
+        $data = $this->pengumumanService->list($key, $size);
+        return response()->view('pengumuman.index', compact('data', 'title'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function create()
     {
-        //
+        $title = $this->title;
+        return response()->view('pengumuman.create', compact('title'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+
+    public function store(PengumumanAddRequest $request)
     {
-        //
+        $judul = $request->input('judul');
+        $isi = $request->input('judul');
+        $file = $request->file('file');
+        try {
+            $pengumuman = $this->pengumumanService->add($judul, $isi);
+            $this->pengumumanService->addFile($pengumuman->id, $file);
+            return response()->redirectTo(route('pengumuman.index'))->with('success', 'Pengumuman berhasil ditambah');
+        }catch (InvariantException $exception) {
+            return redirect()->back()->with('error', 'Gagal menambah pengumuman, terjadi kesalahan pada server')
+                ->withInput($request->all());
+        }
     }
 
     /**
