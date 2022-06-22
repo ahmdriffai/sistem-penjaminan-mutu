@@ -9,8 +9,8 @@
     </a>
 </li>
 
-<li class="menu-item">
-    <a href="index.html" class="menu-link">
+<li class="menu-item {{ Route::is('dosen.*') ? 'active' : '' }}">
+    <a href="{{ route('dosen.index') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bxs-user-account"></i>
         <div data-i18n="Analytics">Manajemen Data Dosen</div>
     </a>

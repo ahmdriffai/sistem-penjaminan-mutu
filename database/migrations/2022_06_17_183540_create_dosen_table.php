@@ -16,12 +16,12 @@ return new class extends Migration
         Schema::create('dosen', function (Blueprint $table) {
             $table->string('nidn')->primary();
             $table->string('nama');
-            $table->string('tempat_lahir');
-            $table->date('tanggal_lahir');
+            $table->string('tempat_lahir')->nullable();
+            $table->date('tanggal_lahir')->nullable();
             $table->string('nik');
-            $table->enum('jenis_kelamin', ['L', 'P']);
-            $table->string('nomer_hp');
-            $table->string('alamat');
+            $table->enum('jenis_kelamin', ['L', 'P'])->nullable();
+            $table->string('nomer_hp')->nullable();
+            $table->string('alamat')->nullable();
             $table->string('foto_path')->nullable();
             $table->string('foto_url')->nullable();
             $table->foreignId('user_id')->nullable()->constrained();

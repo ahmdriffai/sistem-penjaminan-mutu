@@ -29,7 +29,7 @@ class DosenAddRequest extends FormRequest
             'tempat_lahir' => 'required',
             'tanggal_lahir' => 'required',
             'nik' => 'required',
-            'jenis_kelamnin' => 'required',
+            'jenis_kelamin' => 'required',
             'nomer_hp' => 'required',
             'alamat' => 'required',
         ];
