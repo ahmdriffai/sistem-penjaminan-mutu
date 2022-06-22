@@ -2,9 +2,11 @@
 
 @section('content')
     <!-- Hoverable Table rows -->
+    @role('admin')
     <a class="btn btn-primary mb-3" href="{{ route('dokumen-mutu.create') }}">
         <i class="bx bx-plus-circle me-1"></i> Tambah Dokumen Penjaminan Mutu
     </a>
+    @endrole
     <div class="card">
         <div class="d-flex align-items-center flex-row justify-content-around">
             <h5 class="card-header flex-grow-1">Dokumen Penjaminan Mutu</h5>
@@ -51,6 +53,7 @@
                             <a class="btn btn-sm btn-info mx-1" href="{{ route('dokumen-mutu.show', $value->id) }}">
                                 <i class="bx bx-detail me-1"></i> Detail
                             </a>
+                            @role('admin')
                             <a class="btn btn-sm btn-primary mx-1" href="{{ route('dokumen-mutu.edit', $value->id) }}">
                                 <i class="bx bx-edit me-1"></i>
                             </a>
@@ -64,6 +67,7 @@
                                 </button>
                                 {!! Form::close() !!}
                             </div>
+                            @endrole
                         </td>
                     </tr>
                 @endforeach

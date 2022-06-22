@@ -1,5 +1,6 @@
 <div class="card">
     <div class="card-body">
+        @role('admin')
         <button
             type="button"
             class="btn btn-warning"
@@ -8,6 +9,8 @@
         >
             <i class="bx bx-plus-circle me-1"></i> Tambah Dokumen
         </button>
+        @endrole
+
 
         <div class="table-responsive text-nowrap">
             <table class="table table-hover">
@@ -18,7 +21,9 @@
                     <th>Tahun</th>
                     <th>Nama</th>
                     <th>Dokumen</th>
+                    @role('admin')
                     <th>Actions</th>
+                    @endrole
                 </tr>
                 </thead>
                 <tbody class="table-border-bottom-0">
@@ -31,6 +36,7 @@
                         <td>
                             <a href="{{ $value->file_url }}">Preview</a>
                         </td>
+                        @role('admin')
                         <td>
                             <div>
                                 {!! Form::open(['route' => ['file-dokumen.destroy', $value->id], 'method' => 'DELETE']) !!}
@@ -40,6 +46,7 @@
                                 {!! Form::close() !!}
                             </div>
                         </td>
+                        @endrole
                     </tr>
                 @endforeach
                 </tbody>

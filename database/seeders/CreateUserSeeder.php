@@ -17,6 +17,7 @@ class CreateUserSeeder extends Seeder
      */
     public function run()
     {
+        $dosenObjAdmin = Dosen::factory()->create();
         $dosenObj = Dosen::factory()->create();
 
         $admin = User::create([
@@ -31,7 +32,8 @@ class CreateUserSeeder extends Seeder
             'password' => bcrypt('rahasia'),
         ]);
 
-        $admin->dosen()->save($dosenObj);
+        $admin->dosen()->save($dosenObjAdmin);
+        $dosen->dosen()->save($dosenObj);
 
         $roleAdmin = Role::create(['name' => 'admin']);
         $roleDosen = Role::create(['name' => 'dosen']);

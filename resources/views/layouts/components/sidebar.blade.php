@@ -25,8 +25,10 @@
 
         @include('layouts.components.menu.penjaminan-mutu')
         @include('layouts.components.menu.paper-ilmiah')
+        @role('admin')
         @include('layouts.components.menu.informasi')
         @include('layouts.components.menu.manajemen')
+        @endrole
 
     </ul>
 </aside>

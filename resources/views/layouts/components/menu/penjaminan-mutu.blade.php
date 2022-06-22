@@ -2,6 +2,7 @@
     <span class="menu-header-text">Penjaminan Mutu</span>
 </li>
 
+@role('admin')
 <li class="menu-item {{ Route::is('audit.*') ? 'active' : '' }}">
     <a href="{{ route('audit.index') }}" class="menu-link">
         <i class="menu-icon tf-icons bx bxs-file-archive"></i>
@@ -15,6 +16,8 @@
         <div data-i18n="Analytics">Item Penjaminan Mutu</div>
     </a>
 </li>
+@endrole
+
 
 <li class="menu-item">
     <a href="index.html" class="menu-link">
