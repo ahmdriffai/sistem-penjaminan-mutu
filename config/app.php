@@ -206,6 +206,7 @@ return [
         App\Providers\FileDokumenServiceProvider::class,
         App\Providers\AuditServiceProvider::class,
         App\Providers\UserServiceProvider::class,
+        App\Providers\BeritaServiceProvider::class,
 
         // Spatie laravel permission
         Spatie\Permission\PermissionServiceProvider::class,
