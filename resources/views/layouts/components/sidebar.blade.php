@@ -1,8 +1,7 @@
-<aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme">
+<aside id="layout-menu" class="layout-menu menu-vertical menu text-white" style="background-color:#00BFA6;color:#fff;">
     <div class="app-brand demo">
-        <a href="index.html" class="app-brand-link">
+        <a href="home" class="app-brand-link">
               <span class="app-brand-logo demo">
-                <img src="{{ asset('logo-alpha.png') }}" class="img-fluid" width="60px">
               </span>
             <span class="app-brand-text demo menu-text text-white fw-bolder ms-2 text-uppercase">SPMI</span>
         </a>
@@ -17,7 +16,7 @@
     <ul class="menu-inner py-1">
         <!-- Dashboard -->
         <li class="menu-item {{ Route::is('home') ? 'active' : '' }}">
-            <a href="{{ route('home') }}" class="menu-link">
+            <a href="{{ route('home') }}" class="menu-link text-white">
                 <i class="menu-icon tf-icons bx bx-home-circle"></i>
                 <div data-i18n="Analytics">Dashboard</div>
             </a>

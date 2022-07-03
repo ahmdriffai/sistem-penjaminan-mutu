@@ -373,7 +373,7 @@
                                 <button type="button" class="nav-link" role="tab">Expenses</button>
                             </li>
                             <li class="nav-item">
-                                <button type="button" class="nav-link" role="tab">Profit</button>
+                                <button type="button" class="nav-link" role="tab">Pengabdian</button>
                             </li>
                         </ul>
                     </div>

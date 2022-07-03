@@ -14,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    $penjaminanMutu = \App\Models\PenjaminanMutu::all();
+    $pengumuman = \App\Models\Pengumuman::paginate(7);
+    return view('welcome' ,compact('pengumuman', 'penjaminanMutu'));
+})->name('welcome');
 
 Auth::routes();
 
