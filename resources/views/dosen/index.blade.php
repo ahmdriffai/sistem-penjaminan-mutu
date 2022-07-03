@@ -53,7 +53,7 @@
                             </a>
                             <div>
                                 {!! Form::open(['route' => ['dosen.destroy', $value->nidn], 'method' => 'DELETE']) !!}
-                                <button type="submit" class="btn btn-sm btn-danger">
+                                <button type="submit" class="btn btn-sm btn-danger delete-confirm">
                                     <i class="bx bx-trash me-1"></i> Delete
                                 </button>
                                 {!! Form::close() !!}

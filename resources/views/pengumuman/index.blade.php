@@ -25,7 +25,7 @@
             </form>
         </div>
 
-        <div class="table-responsive text-nowrap">
+        <div class="table-responsive text-wrap">
             <table class="table table-hover">
                 <thead>
                 <tr>
@@ -54,7 +54,7 @@
                             </a>
                             <div>
                                 {!! Form::open(['route' => ['pengumuman.destroy', $value->id], 'method' => 'DELETE']) !!}
-                                <button type="submit" class="btn btn-sm btn-danger">
+                                <button type="submit" class="btn btn-sm btn-danger delete-confirm">
                                     <i class="bx bx-trash me-1"></i> Hapus
                                 </button>
                                 {!! Form::close() !!}

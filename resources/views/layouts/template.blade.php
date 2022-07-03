@@ -33,7 +33,6 @@
                         <span class="text-muted fw-light">{{ $title ?? '' }}
                     </h3>
 
-                    @include('layouts.components.alert')
                     @include('layouts.components.validation')
 
                     @yield('content')
@@ -58,5 +57,6 @@
 
 @include('layouts.script')
 @yield('script')
+@include('layouts.components.alert')
 </body>
 </html>

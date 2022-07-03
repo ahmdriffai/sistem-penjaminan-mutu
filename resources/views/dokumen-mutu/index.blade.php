@@ -62,7 +62,7 @@
                             </a>
                             <div>
                                 {!! Form::open(['route' => ['dokumen-mutu.destroy', $value->id], 'method' => 'DELETE']) !!}
-                                <button type="submit" class="btn btn-sm btn-danger">
+                                <button type="submit" class="btn btn-sm btn-danger delete-confirm">
                                     <i class="bx bx-trash me-1"></i>
                                 </button>
                                 {!! Form::close() !!}
