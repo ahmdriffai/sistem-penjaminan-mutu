@@ -10,8 +10,8 @@
     </a>
 </li>
 
-<li class="menu-item">
-    <a href="index.html" class="menu-link text-white">
+<li class="menu-item {{ Route::is('berita.*') ? 'active' : '' }}">
+    <a href="{{ route('berita.index') }}" class="menu-link text-white">
         <i class="menu-icon tf-icons bx bx-news"></i>
         <div data-i18n="Analytics">Berita</div>
     </a>

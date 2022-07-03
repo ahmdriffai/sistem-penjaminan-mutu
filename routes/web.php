@@ -35,6 +35,7 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('/file-dokumen', \App\Http\Controllers\FileDokumenController::class)->only(['store', 'destroy']);
     Route::resource('/user', \App\Http\Controllers\UserController::class);
     Route::resource('/dosen', \App\Http\Controllers\DosenController::class);
+    Route::resource('/berita', \App\Http\Controllers\BeritaController::class)->only('index', 'create', 'store');
 });
 
 
