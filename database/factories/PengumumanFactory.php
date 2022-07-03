@@ -17,7 +17,7 @@ class PengumumanFactory extends Factory
     public function definition()
     {
         return [
-            'judul' => $this->faker->title(),
+            'judul' => $this->faker->text(),
             'isi' => $this->faker->realText(),
             'file_url' => null,
             'file_path' => null,

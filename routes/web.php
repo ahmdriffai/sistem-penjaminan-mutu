@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     $penjaminanMutu = \App\Models\PenjaminanMutu::all();
-    $pengumuman = \App\Models\Pengumuman::paginate(7);
+    $pengumuman = \App\Models\Pengumuman::paginate(5);
     return view('welcome' ,compact('pengumuman', 'penjaminanMutu'));
 })->name('welcome');
 
