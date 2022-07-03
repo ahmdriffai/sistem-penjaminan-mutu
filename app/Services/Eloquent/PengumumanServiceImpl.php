@@ -125,7 +125,9 @@ class PengumumanServiceImpl implements PengumumanService
 
     function list(string $key, $size = 10): LengthAwarePaginator
     {
-        $pengumuman = Pengumuman::where('judul', 'like', '%'.$key.'%')->paginate($size);
+        $pengumuman = Pengumuman::where('judul', 'like', '%'.$key.'%')
+            ->orderBy('created_at', 'DESC')
+            ->paginate($size);
 
         return $pengumuman;
     }
