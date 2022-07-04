@@ -19,26 +19,17 @@
 @endrole
 
 
-<li class="menu-item">
-    <a href="{{ route('dokumen-mutu.index') }}" class="menu-link text-white">
-    <i class="menu-icon tf-icons bx bx-file"></i>
-        <div data-i18n="Analytics">Manual Mutu</div>
-    </a>
-</li>
+@php($penjaminanMutu = \App\Models\PenjaminanMutu::all())
 
+@foreach($penjaminanMutu as $value)
 <li class="menu-item">
-    <a href="{{ route('dokumen-mutu.index') }}" class="menu-link text-white">
+    <a href="{{ route('dokumen-mutu.list.show', $value->id) }}" class="menu-link text-white">
     <i class="menu-icon tf-icons bx bx-file"></i>
-        <div data-i18n="Analytics">SOP</div>
+        <div data-i18n="Analytics">{{ $value->nama }}</div>
     </a>
 </li>
+@endforeach
 
-<li class="menu-item">
-    <a href="{{ route('dokumen-mutu.index') }}" class="menu-link text-white">
-    <i class="menu-icon tf-icons bx bx-file"></i>
-        <div data-i18n="Analytics">Intruksi Kerja</div>
-    </a>
-</li>
 
 <li class="menu-item {{ Route::is('dokumen-mutu.*') ? 'active' : '' }}">
     <a href="{{ route('dokumen-mutu.index') }}" class="menu-link text-white">

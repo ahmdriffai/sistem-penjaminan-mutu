@@ -11,34 +11,37 @@
                     <h5 class="mb-0">Tambah Berita</h5>
                 </div>
                 <div class="card-body">
-                    {!! Form::open(['route' => 'berita.store', 'method' => 'POST', 'files' => true]) !!}
+                    {!! Form::open(['route' => ['berita.update', $berita->id], 'method' => 'PUT', 'files' => true]) !!}
                     <div class="mb-3">
                         <label class="text-danger">*</label>
                         {!! Form::label('judul', 'Judul', ['class' => 'form-label']); !!}
-                        {!! Form::text('judul', null ,['class' => 'form-control']); !!}
+                        {!! Form::text('judul', $berita->judul ,['class' => 'form-control']); !!}
                     </div>
 
                     <div class="mb-3">
                         {!! Form::label('isi', 'Isi Berita', ['class' => 'form-label']); !!}
                         <div class="input-group input-group-merge">
-                            {!! Form::textarea('isi', null, array('class' => 'form-control', 'id' => 'body', 'width' => '100%')) !!}
+                            {!! Form::textarea('isi', $berita->isi, array('class' => 'form-control', 'id' => 'body', 'width' => '100%')) !!}
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="col mb-3">
                             {!! Form::label('gambar', 'Gambar / Foto', ['class' => 'form-label']); !!}
-                            {!! Form::file('gambar' ,['class' => 'form-control']); !!}
+                            <div class="d-flex align-items-center">
+                                <img src="{{ $berita->gambar_url }}" class="img-fluid" width="400px">
+                                {!! Form::file('gambar' ,['class' => ['form-control', 'ms-3']]); !!}
+                            </div>
                         </div>
                     </div>
 
                     <div class="mb-3">
                         <label class="text-danger">*</label>
                         {!! Form::label('penulis', 'Penulis', ['class' => 'form-label']); !!}
-                        {!! Form::text('penulis', null ,['class' => 'form-control']); !!}
+                        {!! Form::text('penulis', $berita->penulis ,['class' => 'form-control']); !!}
                     </div>
 
-                    <button type="submit" class="btn btn-primary">Kirim</button>
+                    <button type="submit" class="btn btn-primary">Ubah</button>
                     {!! Form::close() !!}
                 </div>
             </div>

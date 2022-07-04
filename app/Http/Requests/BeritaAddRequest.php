@@ -26,7 +26,8 @@ class BeritaAddRequest extends FormRequest
         return [
             'judul' => 'required',
             'isi' => 'required',
-            'penulis' => 'required'
+            'penulis' => 'required',
+            'gambar' => 'required|file|mimes:jpg,png'
         ];
     }
 }

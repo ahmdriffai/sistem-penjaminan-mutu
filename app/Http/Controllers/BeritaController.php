@@ -2,6 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\InvariantException;
+use App\Http\Requests\BeritaAddRequest;
+use App\Http\Requests\BeritaUpdateRequest;
+use App\Models\Berita;
 use App\Services\BeritaService;
 use Illuminate\Http\Request;
 
@@ -30,59 +34,55 @@ class BeritaController extends Controller
         return response()->view('berita.create', compact('title'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function store(BeritaAddRequest $request)
     {
-        //
+        $gambar = $request->file('gambar');
+        try {
+            $berita = $this->beritaService->add($request);
+            $this->beritaService->addImage($berita->id, $gambar);
+            return response()->redirectTo(route('berita.index'))->with('success', 'Berhasil menambahkan berita');
+        }catch (InvariantException $exception) {
+            return redirect()->back()->with('error', $exception->getMessage())->withInput($request->all());
+        }
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $title = $this->title;
+        $berita = Berita::find($id);
+        return response()->view('berita.show', compact('berita', 'title'));
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function edit($id)
     {
-        //
+        $title = $this->title;
+        $berita = Berita::find($id);
+        return response()->view('berita.edit', compact('title', 'berita'));
+
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
+    public function update(BeritaUpdateRequest $request, $id)
     {
-        //
+        $gambar = $request->file('gambar');
+
+        try {
+            $result = $this->beritaService->update($request, $id);
+            if ($gambar != null) {
+                $this->beritaService->updateImage($id, $gambar);
+            }
+            return response()->redirectTo(route('berita.index'))->with('success', 'Berhasil mengubah berita');
+        }catch (InvariantException $exception) {
+            return redirect()->back()->with('error', $exception->getMessage())->withInput($request->all());
+        }
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        try {
+            $this->beritaService->delete($id);
+            return response()->redirectTo(route('berita.index'))->with('success', 'Berhasil menghapus berita');
+        }catch (InvariantException $exception) {
+            return redirect()->back()->with('error', $exception->getMessage());
+        }
     }
 }

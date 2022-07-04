@@ -72,6 +72,24 @@ class DokumenMutuServiceTest extends TestCase
 
     }
 
+    public function test_list_dokumen_mutu_by_id()
+    {
+        $dokumenMutu1 = DokumenMutu::factory()->create();
+        $dokumenMutu2 = DokumenMutu::factory()->create();
+
+        $list = $this->dokumenMutuService->listById($dokumenMutu1->id);
+
+        self::assertSame(1, $list->count());
+
+        $list = $this->dokumenMutuService->listById($dokumenMutu1->id, 'salah');
+
+        self::assertSame(0 , $list->count());
+
+        $list = $this->dokumenMutuService->listById($dokumenMutu2->id);
+
+        self::assertSame(1, $list->count());
+    }
+
     public function test_update_dokumen_mutu_success()
     {
         $dokumentMutu = DokumenMutu::factory()->create();

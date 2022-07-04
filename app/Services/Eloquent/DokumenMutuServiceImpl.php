@@ -101,4 +101,18 @@ class DokumenMutuServiceImpl implements DokumenMutuService
         $dokumenMutu = DokumenMutu::find($id);
         return $dokumenMutu;
     }
+
+    function listById(int $id, string $key = '', int $size = 10): LengthAwarePaginator
+    {
+        if ($id == null) {
+            throw new InvariantException("Dokumen Mutu tidak ditemukan");
+        }
+        $paginate = DokumenMutu::where('id', $id)
+            ->where('nama', 'like', '%' . $key . '%')
+            ->orderBy('penjaminan_mutu_id', 'ASC')
+            ->orderBy('created_at', 'DESC')
+            ->paginate($size);
+
+        return $paginate;
+    }
 }

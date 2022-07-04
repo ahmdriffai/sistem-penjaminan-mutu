@@ -27,10 +27,16 @@ class PenelitianController extends Controller
 
     public function index(Request $request)
     {
+        $owner = Auth::user()->dosen->nidn ?? null;
         $title = $this->title;
         $key = $request->query('key') ?? '';
         $size = $request->query('size') ?? 10;
-        $data = $this->penelitianService->list($key, $size);
+
+        if (Auth::user()->getRoleNames()->first() == 'dosen'){
+            $data = $this->penelitianService->listByNidn($owner, $key, $size);
+        }else{
+            $data = $this->penelitianService->list($key, $size);
+        }
         return response()->view('penelitian.index', compact('title', 'data'));
     }
 

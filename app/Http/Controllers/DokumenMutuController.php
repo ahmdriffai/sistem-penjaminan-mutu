@@ -13,7 +13,7 @@ use Illuminate\Http\Request;
 class DokumenMutuController extends Controller
 {
 
-    private $title = 'Dokumen Mutu';
+    private $title = 'Dokumen';
 
     private DokumenMutuService $dokumenMutuService;
 
@@ -27,7 +27,7 @@ class DokumenMutuController extends Controller
     {
         $title = $this->title;
         $key = $request->input('key') ?? '';
-        $data = $this->dokumenMutuService->list($key);
+        $data = $this->dokumenMutuService->list($key, 10);
         return response()->view('dokumen-mutu.index', compact('title', 'data'));
     }
 
@@ -36,6 +36,13 @@ class DokumenMutuController extends Controller
         $title = $this->title;
         $penjaminanMutu = PenjaminanMutu::pluck('nama','id')->all();
         return response()->view('dokumen-mutu.create', compact('title', 'penjaminanMutu'));
+    }
+
+    public function createById($id)
+    {
+        $title = $this->title;
+        $penjaminanMutu = PenjaminanMutu::find($id);
+        return response()->view('dokumen-mutu.create-by-id', compact('title', 'penjaminanMutu'));
     }
 
     public function store(DokumenMutuAddRequest $request)
@@ -85,5 +92,14 @@ class DokumenMutuController extends Controller
         }catch (InvariantException $exception) {
             return redirect()->back()->with('error', 'Gagal menghapus dokumen penjaminan mutu, dokumen masih berisi file');
         }
+    }
+
+    public function listShow(Request $request, $id) {
+        $key = $request->input('key') ?? '';
+        $data = $this->dokumenMutuService->listById($id, $key, 10);
+        $penjaminanMutu = PenjaminanMutu::find($id);
+        $title = $this->title . " " . $penjaminanMutu->nama;
+
+        return response()->view('dokumen-mutu.list-show', compact('title', 'data', 'penjaminanMutu'));
     }
 }

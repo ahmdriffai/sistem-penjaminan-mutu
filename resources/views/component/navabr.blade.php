@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg shadow navbar-light bg-white py-3 bg-light">
+<nav class="navbar fixed-top navbar-expand-lg shadow navbar-light bg-white py-3 bg-light">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             <strong>SPMI</strong>
@@ -14,7 +14,7 @@
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
                         @foreach($penjaminanMutu as $value)
-                        <li><a class="dropdown-item text-capitalize" href="#">{{ $value->nama }}</a></li>
+                        <li><a class="dropdown-item text-capitalize" href="{{ route('welcome.dokumen-mutu', $value->id) }}">{{ $value->nama }}</a></li>
                         @endforeach
                         <li><hr class="dropdown-divider"></li>
                         <li><a class="dropdown-item text-capitalize" href="#">Something else here</a></li>

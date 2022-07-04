@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    $penjaminanMutu = \App\Models\PenjaminanMutu::all();
-    $pengumuman = \App\Models\Pengumuman::paginate(5);
-    return view('welcome' ,compact('pengumuman', 'penjaminanMutu'));
-})->name('welcome');
+Route::get('/', [\App\Http\Controllers\WelcomeController::class, 'index'])->name('welcome');
+Route::get('/berita/detail/{id}', [\App\Http\Controllers\WelcomeController::class, 'detailBerita'])->name('detail-berita');
+Route::get('/pengumuman/detail/{id}', [\App\Http\Controllers\WelcomeController::class, 'detailPengumuman'])->name('detail-pengumuman');
+Route::get('/dokumen-mutu/detail/{id}', [\App\Http\Controllers\WelcomeController::class, 'dokumenMutu'])->name('welcome.dokumen-mutu');
+Route::get('/detail-documen-mutu/{id}', [\App\Http\Controllers\WelcomeController::class, 'detailDokumenMutu'])->name('welcome.detail-dokumen-mutu');
 
 Auth::routes();
 
@@ -30,12 +30,15 @@ Route::middleware(['auth'])->group(function (){
     Route::resource('/penjaminan-mutu', \App\Http\Controllers\PenjaminanMutuController::class)
         ->middleware('role:admin')
         ->except(['show']);
+
     Route::resource('/dokumen-mutu', \App\Http\Controllers\DokumenMutuController::class);
+    Route::get('/dokumen-mutu/list/show/{id}', [\App\Http\Controllers\DokumenMutuController::class, 'listShow'])->name('dokumen-mutu.list.show');
+    Route::get('/dokumen-mutu/create/{id}', [\App\Http\Controllers\DokumenMutuController::class, 'createById'])->name('dokumen-mutu.create.id');
     Route::resource('/audit', \App\Http\Controllers\AuditController::class)->except(['show']);
     Route::resource('/file-dokumen', \App\Http\Controllers\FileDokumenController::class)->only(['store', 'destroy']);
     Route::resource('/user', \App\Http\Controllers\UserController::class);
     Route::resource('/dosen', \App\Http\Controllers\DosenController::class);
-    Route::resource('/berita', \App\Http\Controllers\BeritaController::class)->only('index', 'create', 'store');
+    Route::resource('/berita', \App\Http\Controllers\BeritaController::class);
 });
 
 

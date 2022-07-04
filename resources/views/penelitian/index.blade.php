@@ -36,7 +36,9 @@
                     <th>Sumber Dana</th>
                     <th>Jumlah</th>
                     <th>Sebagai</th>
-                    <th>Publis</th>
+                    @role('admin')
+                    <th>Dosen</th>
+                    @endrole
                     <th>Actions</th>
                 </tr>
                 </thead>
@@ -50,7 +52,9 @@
                     <td>{{ $value->sumber_dana }}</td>
                     <td>Rp.{{ number_format($value->jumlah) }}</td>
                     <td>{{ $value->sebagai }}</td>
-                    <td><span class="badge bg-label-primary me-1">Active</span></td>
+                    @role('admin')
+                    <td><span class="badge bg-label-primary me-1">{{ $value->dosen->nama }}</span></td>
+                    @endrole
                     <td class="d-flex">
                         <a class="btn btn-sm btn-primary mx-1" href="{{ route('penelitian.edit', $value->id) }}">
                             <i class="bx bx-edit-alt me-1"></i> Edit

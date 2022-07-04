@@ -96,6 +96,24 @@ class PenelitianServiceTest extends TestCase
 
     }
 
+    public function test_list_dokumen_mutu_by_id()
+    {
+        $penelitian1 = Penelitian::factory()->create();
+        $penelitian2 = Penelitian::factory()->create();
+
+        $list = $this->penelitianService->listByNidn($penelitian1->owner);
+
+        self::assertSame(1, $list->count());
+
+        $list = $this->penelitianService->listByNidn($penelitian1->owner, 'salah');
+
+        self::assertSame(0 , $list->count());
+
+        $list = $this->penelitianService->listByNidn($penelitian2->owner);
+
+        self::assertSame(1, $list->count());
+    }
+
     public function test_update_penelitian()
     {
         $penelitian = Penelitian::factory()->create();

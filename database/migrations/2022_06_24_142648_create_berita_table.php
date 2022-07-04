@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('berita', function (Blueprint $table) {
             $table->id();
             $table->string('judul');
-            $table->string('isi');
+            $table->text('isi');
             $table->string('penulis');
             $table->string('gambar_url')->nullable();
             $table->string('gambar_path')->nullable();

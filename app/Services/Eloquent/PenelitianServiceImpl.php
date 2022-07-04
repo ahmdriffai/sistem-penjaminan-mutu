@@ -110,4 +110,13 @@ class PenelitianServiceImpl implements PenelitianService
 
         return $penelitian;
     }
+
+    function listByNidn(string $owner, string $key = '', int $size = 10): LengthAwarePaginator
+    {
+        $penelitian = Penelitian::where('owner', $owner)
+            ->where('judul', 'like', '%'. $key .'%')
+            ->orderBy('created_at', 'DESC')->paginate($size);
+
+        return $penelitian;
+    }
 }

@@ -1,4 +1,4 @@
-<h3><i class="fa fa-question-circle"></i> Tentang Penjaminan Mutu Internal</h3>
+<h3 class="text-success mb-5 text-center"><i class="fa fa-question-circle"></i> Tentang Penjaminan Mutu Internal</h3>
 <p>
     Sesuai dengan amanat UU No. 12 Tahun 2012, bahwa penjaminan mutu perguruan tinggi ditujukan untuk pendidikan mutu. Perguruan tinggi harus secara sistematis melaksanakan proses penjaminan mutu melalui Sistem Penjaminan Mutu Perguruan Tinggi dan mengacu Standar Nasional Pendidikan Tinggi.
 </p>
