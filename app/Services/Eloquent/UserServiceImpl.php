@@ -4,6 +4,7 @@ namespace App\Services\Eloquent;
 
 use App\Exceptions\InvariantException;
 use App\Http\Requests\UserAddRequest;
+use App\Http\Requests\UserChangePasswordRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Models\Dosen;
 use App\Models\User;
@@ -92,5 +93,28 @@ class UserServiceImpl implements UserService
         }catch (\Exception $exception) {
             throw new InvariantException($exception->getMessage());
         }
+    }
+
+    public function changePassword(UserChangePasswordRequest $request, $userId): User
+    {
+        $oldPassword = $request->input('old_password');
+        $newPassword = $request->input('new_password');
+        try {
+            DB::beginTransaction();
+            $user = User::findOrFail($userId);
+
+            if (!Hash::check($oldPassword, $user->password)){
+                throw new InvariantException('Password lama salah');
+            }
+
+            $user->password = Hash::make($newPassword);
+            $user->save();
+            DB::commit();
+        }catch (\Exception $exception) {
+            DB::rollBack();
+            throw new InvariantException($exception->getMessage());
+        }
+
+        return $user;
     }
 }

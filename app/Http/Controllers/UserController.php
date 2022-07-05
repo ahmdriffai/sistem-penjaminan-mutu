@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\InvariantException;
 use App\Http\Requests\UserAddRequest;
+use App\Http\Requests\UserChangePasswordRequest;
 use App\Http\Requests\UserUpdateRequest;
 use App\Jobs\SendEmailJob;
 use App\Models\Dosen;
 use App\Models\User;
 use App\Services\UserService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Spatie\Permission\Models\Role;
 
 class UserController extends Controller
@@ -78,6 +80,21 @@ class UserController extends Controller
             $this->userService->delete($id);
         }catch (InvariantException $exception) {
             return redirect()->back()->with('error', 'User gagal dihapus, terjadi kesalahan pada server kami');
+        }
+    }
+
+    public function changePasswordGet() {
+        $title = 'Ganti Password';
+        return view('user.change-password', compact('title'));
+    }
+
+    public function changePasswordPost(UserChangePasswordRequest $request) {
+        $user = Auth::user();
+        try {
+            $this->userService->changePassword($request, $user->id);
+            return redirect()->back()->with('success', 'Password berhasil diubah');
+        }catch (InvariantException $exception) {
+            return redirect()->back()->with('error', $exception->getMessage());
         }
     }
 }

@@ -36,9 +36,11 @@ Route::middleware(['auth'])->group(function (){
     Route::get('/dokumen-mutu/create/{id}', [\App\Http\Controllers\DokumenMutuController::class, 'createById'])->name('dokumen-mutu.create.id');
     Route::resource('/audit', \App\Http\Controllers\AuditController::class)->except(['show']);
     Route::resource('/file-dokumen', \App\Http\Controllers\FileDokumenController::class)->only(['store', 'destroy']);
-    Route::resource('/user', \App\Http\Controllers\UserController::class);
     Route::resource('/dosen', \App\Http\Controllers\DosenController::class);
     Route::resource('/berita', \App\Http\Controllers\BeritaController::class);
+    Route::resource('/user', \App\Http\Controllers\UserController::class);
+    Route::get('users/change-password', [\App\Http\Controllers\UserController::class, 'changePasswordGet'])->name('users.change-password-get');
+    Route::post('users/change-password', [\App\Http\Controllers\UserController::class, 'changePasswordPost'])->name('users.change-password-post');
 });
 
 
