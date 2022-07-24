@@ -1,7 +1,8 @@
-<nav class="navbar fixed-top navbar-expand-lg shadow navbar-light bg-white py-3 bg-light">
+<nav class="navbar navbar-expand-lg shadow navbar-light bg-white py-3 bg-light">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <strong>SPMI</strong>
+            <img src="{{ asset('fksp.png') }}" class="img-fluid me-3" width="50px">
+            <strong>SPMI FKSP UNSIQ</strong>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -17,7 +18,6 @@
                         <li><a class="dropdown-item text-capitalize" href="{{ route('welcome.dokumen-mutu', $value->id) }}">{{ $value->nama }}</a></li>
                         @endforeach
                         <li><hr class="dropdown-divider"></li>
-                        <li><a class="dropdown-item text-capitalize" href="#">Something else here</a></li>
                     </ul>
                 </li>
                 <li class="nav-item">

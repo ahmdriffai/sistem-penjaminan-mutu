@@ -108,7 +108,7 @@
                                 <div class="d-flex w-100 flex-wrap align-items-center justify-content-between gap-2">
                                     <div class="me-2">
                                         <h4 class="mb-0">
-                                            <a href="" class="link-primary">{{ $value->judul }}</a>
+                                            <a href="{{ route('pengumuman.show', $value->id) }}" class="link-primary">{{ $value->judul }}</a>
                                         </h4>
                                         <small class="text-muted d-block mb-1">{{ date('d M, Y', strtotime($value->created_at)) }}</small>
                                     </div>

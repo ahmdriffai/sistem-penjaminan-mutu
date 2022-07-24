@@ -10,9 +10,6 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
-        .content{
-            margin-top: 100px !important;
-        }
         .card-berita:hover{
             box-shadow: 0 6px 6px rgba(0,0,0,0.2);
             transform: translateY(-3px);
@@ -32,7 +29,7 @@
     @include('component.carousel')
 @endif
 
-<div class="container content">
+<div class="container mt-5">
     @yield('content')
 </div>
 

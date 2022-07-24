@@ -44,12 +44,8 @@
                 <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
                     <!-- Content -->
                     <h6 class="text-uppercase fw-bold mb-4">
-                        Fakultas K & Sosial Politik
+                        Fakultas Komunikasi dan Sosial Politik
                     </h6>
-                    <p>
-                        Here you can use rows and columns to organize your footer content. Lorem ipsum
-                        dolor sit amet, consectetur adipisicing elit.
-                    </p>
                 </div>
                 <!-- Grid column -->
 
@@ -59,13 +55,15 @@
                     <h6 class="text-uppercase fw-bold mb-4">
                         Contact
                     </h6>
-                    <p><i class="fas fa-home me-3"></i> New York, NY 10012, US</p>
+                    <p><i class="fas fa-home me-3"></i>
+                        JL. Raya Kalibeber Km.03 Wonosobo, Mojotengah, Kalibeber, Kec. Mojotengah, Kabupaten Wonosobo, Jawa Tengah 56351
+                    </p>
                     <p>
                         <i class="fas fa-envelope me-3"></i>
                         info@example.com
                     </p>
-                    <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>
-                    <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>
+{{--                    <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>--}}
+{{--                    <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>--}}
                 </div>
                 <!-- Grid column -->
             </div>
@@ -76,8 +74,8 @@
 
     <!-- Copyright -->
     <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-        © 2021 Copyright:
-        <a class="text-reset fw-bold" href="https://mdbootstrap.com/">MDBootstrap.com</a>
+        © 2022 Copyright:
+        <a class="text-reset fw-bold" href="https://fksp-unsiq.ac.id">FKPS UNSIQ</a>
     </div>
     <!-- Copyright -->
 </footer>

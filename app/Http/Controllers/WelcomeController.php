@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Berita;
 use App\Models\DokumenMutu;
+use App\Models\Pengumuman;
 use App\Models\PenjaminanMutu;
 use App\Services\DokumenMutuService;
 use Illuminate\Http\Request;
@@ -18,20 +19,22 @@ class WelcomeController extends Controller
     }
 
     public function index() {
-        $pengumuman = \App\Models\Pengumuman::paginate(5);
+        $pengumuman = \App\Models\Pengumuman::paginate(3);
         $berita = \App\Models\Berita::orderBy('created_at', 'DESC')->paginate(10);
         $penjaminanMutu = PenjaminanMutu::all();
         return response()->view('welcome.index' ,compact('pengumuman', 'berita', 'penjaminanMutu'));
     }
 
     public function detailBerita($id) {
-        $berita = Berita::find($id);        $listBerita = \App\Models\Berita::orderBy('created_at', 'DESC')->paginate(10);
+        $berita = Berita::find($id);
+        $listBerita = \App\Models\Berita::orderBy('created_at', 'DESC')->paginate(3);
         return response()->view('welcome.detail-berita', compact('berita', 'listBerita'));
     }
 
     public function detailPengumuman($id) {
-        $berita = Berita::find($id);
-        return response()->view('welcome.detail-berita', compact('berita'));
+        $pengumuman = Pengumuman::find($id);
+        $listPengumuman = \App\Models\Pengumuman::orderBy('created_at', 'DESC')->paginate(3);
+        return response()->view('welcome.detail-pengumuman', compact('pengumuman', 'listPengumuman'));
     }
 
     public function dokumenMutu(Request $request, $id) {

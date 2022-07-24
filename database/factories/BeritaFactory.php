@@ -21,7 +21,7 @@ class BeritaFactory extends Factory
             'isi' => $this->faker->text(),
             'penulis' => $this->faker->userName(),
             'gambar_path' => null,
-            'gambar_url' => null,
+            'gambar_url' => $this->faker->imageUrl(),
         ];
     }
 }

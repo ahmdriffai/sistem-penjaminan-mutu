@@ -8,7 +8,7 @@
         <li class="breadcrumb-item active" aria-current="page">{{ $berita->judul }}</li>
     </ol>
 </nav>
-<div class="row mt-5">
+<div class="row">
     <div class="col-md-8">
         <div class="row">
             <h4 class="text-success">{{ $berita->judul }}</h4>
@@ -20,7 +20,7 @@
         </p>
     </div>
     <div class="col-md-4">
-        <div class="card border-0 shadow-sm border">
+        <div class="card border-0 shadow border">
             <div class="card-body">
                 <h5><i class="fa fa-bullhorn"></i> Berita Terpopuler</h5>
                 <ul class="list-group list-group-flush">
@@ -39,7 +39,7 @@
 </div>
 <div class="row mt-5 gx-5 gy-3">
     <div class="col-md-12">
-        <h3 class="text-success mb-5"><i class="fas fa-newspaper"></i> Berita</h3>
+        <h3 class="text-success mb-5"><i class="fas fa-newspaper"></i> Berita Lainya</h3>
         <div class="row g-5">
             @foreach($listBerita as $value)
                 <div class="col-md-4">
