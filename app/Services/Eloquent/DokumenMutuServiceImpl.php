@@ -107,7 +107,7 @@ class DokumenMutuServiceImpl implements DokumenMutuService
         if ($id == null) {
             throw new InvariantException("Dokumen Mutu tidak ditemukan");
         }
-        $paginate = DokumenMutu::where('id', $id)
+        $paginate = DokumenMutu::where('penjaminan_mutu_id', $id)
             ->where('nama', 'like', '%' . $key . '%')
             ->orderBy('penjaminan_mutu_id', 'ASC')
             ->orderBy('created_at', 'DESC')
