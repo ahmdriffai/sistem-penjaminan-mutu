@@ -17,30 +17,39 @@ class CreateUserSeeder extends Seeder
      */
     public function run()
     {
-        $dosenObjAdmin = Dosen::factory()->create();
-        $dosenObj = Dosen::factory()->create();
+        $dosenObjAdmin = Dosen::factory()->create([
+            'nidn' => '0613097503',
+            'nama' => 'Insan Mahmud, SE, M.Si',
+            'tempat_lahir' => 'Wonosobo',
+            'tanggal_lahir' => null,
+            'nik' => null,
+            'jenis_kelamin' => 'L',
+            'nomer_hp' => null,
+            'alamat' => 'Wonobungkah RT 8 RW 5 Kelurahan Jlamprang kecamatan Wonosobo',
+        ]);
+//        $dosenObj = Dosen::factory()->create();
 
         $admin = User::create([
-            'name' => 'admin',
-            'email' => 'admin@gmail.com',
+            'name' => 'Insan Mahmud, SE, M.Si',
+            'email' => 'insanmahmud@unsiq.ac.id',
             'password' => bcrypt('rahasia'),
         ]);
 
-        $dosen = User::create([
-            'name' => 'dosen',
-            'email' => 'dosen@gmail.com',
-            'password' => bcrypt('rahasia'),
-        ]);
+//        $dosen = User::create([
+//            'name' => 'dosen',
+//            'email' => 'dosen@gmail.com',
+//            'password' => bcrypt('rahasia'),
+//        ]);
 
         $admin->dosen()->save($dosenObjAdmin);
-        $dosen->dosen()->save($dosenObj);
+//        $dosen->dosen()->save($dosenObj);
 
         $roleAdmin = Role::create(['name' => 'admin']);
-        $roleDosen = Role::create(['name' => 'dosen']);
+//        $roleDosen = Role::create(['name' => 'dosen']);
 
 
         $admin->assignRole([$roleAdmin->id]);
-        $dosen->assignRole([$roleDosen->id]);
+//        $dosen->assignRole([$roleDosen->id]);
 
     }
 }

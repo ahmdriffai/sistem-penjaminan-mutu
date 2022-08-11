@@ -1,5 +1,4 @@
 @extends('layouts.app')
-@include('component.carousel')
 @section('content')
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
@@ -7,6 +6,7 @@
             <li class="breadcrumb-item"><a href="{{ route('welcome.dokumen-mutu', $penjaminanMutu->id) }}">{{ $penjaminanMutu->nama }}</a></li>
         </ol>
     </nav>
+    @include('component.carousel')
 
     <div class="d-flex justify-content-between">
         <h3 class="text-success"> Dokumen {{ $penjaminanMutu->nama }}</h3>

@@ -4,7 +4,7 @@
     <nav aria-label="breadcrumb">
         <ol class="breadcrumb">
             <li class="breadcrumb-item"><a href="{{ route('welcome') }}">Beranda</a></li>
-            <li class="breadcrumb-item"><a href="{{ route('welcome.dokumen-mutu', $dokumenMutu->penjaminaMutu->id) }}">{{ $dokumenMutu->penjaminanMutu->nama }}</a></li>
+            <li class="breadcrumb-item"><a href="{{ route('welcome.dokumen-mutu', $dokumenMutu->penjaminanMutu->id) }}">{{ $dokumenMutu->penjaminanMutu->nama }}</a></li>
             <li class="breadcrumb-item active" aria-current="page">{{ $dokumenMutu->nama }}</li>
         </ol>
     </nav>
