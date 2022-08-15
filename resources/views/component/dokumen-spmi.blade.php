@@ -7,7 +7,7 @@
             </p>
             <div class="row g-5">
                 @foreach($penjaminanMutu as $value)
-                    <div class="col-md-3">
+                    <div class="col-md-12">
                         <a href="{{ route('welcome.dokumen-mutu', $value->id) }}" class="nav-link">
                             <div class="card card-berita shadow text-center p-5">
                                 <div class="bg-white">
