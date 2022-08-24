@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->text('keterangan');
+            $table->string('icon')->nullable();
             $table->timestamps();
         });
     }

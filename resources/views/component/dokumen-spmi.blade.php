@@ -11,7 +11,13 @@
                         <a href="{{ route('welcome.dokumen-mutu', $value->id) }}" class="nav-link">
                             <div class="card card-berita shadow text-center p-5">
                                 <div class="bg-white">
-                                    <i class="far fa-file-archive text-primary" style="font-size: 50px"></i>
+                                     @if ($value->icon)
+                                        <div style="overflow:hidden;">
+                                            <img src="{{asset('storage/'.$value->icon)}}" alt="{{asset('storage/'.$value->icon)}}" class="img-fluid img-thumbnail" style="height:780px;">
+                                        </div>
+                                    @else
+                                        <i class="far fa-file-archive text-primary" style="font-size: 50px"></i>
+                                    @endif
                                 </div>
                                 <h5 class="card-title m-3">{{ $value->nama }}</h5>
                             </div>

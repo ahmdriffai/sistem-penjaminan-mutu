@@ -9,7 +9,10 @@
         <h5 class="mb-0">Edit Item Penjaminan Mutu</h5>
     </div>
     <div class="card-body">
-        {!! Form::open(['route' => ['penjaminan-mutu.update', $penjaminanMutu->id], 'method' => 'PUT']) !!}
+        <form action="/penjaminan-mutu/{{$penjaminanMutu->id}}" method="POST" enctype="multipart/form-data">
+        @csrf
+        @method('put')
+        {{-- {!! Form::open(['route' => 'penjaminan-mutu.store', 'method' => 'POST']) !!} --}}
         <div class="mb-3">
             <label class="text-danger">*</label>
             {!! Form::label('nama', 'Nama', ['class' => 'form-label']); !!}
@@ -22,9 +25,24 @@
             </div>
             <div class="form-text">* keterangan penjaminan mutu, misal : sop adalah ...</div>
         </div>
+        <div class="mb-3">
+            <label for="icon" class="form-label @error('icon') is-invalid @enderror">Icon</label>
+            <input type="hidden" name="oldImage" value="{{$penjaminanMutu->icon}}">
+            @if ($penjaminanMutu->icon)
+                <img src="{{asset('storage/'.$penjaminanMutu->icon)}}" class="img-preview img-fluid mb-3 col-sm-5 d-block">
+            @else
+                <img class="img-preview img-fluid mb-3 col-sm-5">
+            @endif
+            <input class="form-control" type="file" id="icon" name="icon" onchange="previewImage()">
+            @error('icon')
+                <div class="invalid-feedback">
+                    {{$message}}
+                </div>
+            @enderror
+        </div>
 
         <button type="submit" class="btn btn-primary">Kirim</button>
-        {!! Form::close() !!}
+        </form>
     </div>
 </div>
 @endsection
@@ -39,6 +57,19 @@
         });
         CKEDITOR.config.allowedContent = true;
         CKEDITOR.config.width = '100%';
+
+        function previewImage() {
+            const icon = document.querySelector('#icon');
+            const imgPreview = document.querySelector('.img-preview');
+        
+            imgPreview.style.display='block';
+            const oFReader = new FileReader();
+            oFReader.readAsDataURL(icon.files[0]);
+
+            oFReader.onload = function(oFREvent){
+                imgPreview.src=oFREvent.target.result;
+            }
+        }
     </script>
 @endsection
 

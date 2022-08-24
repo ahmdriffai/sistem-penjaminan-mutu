@@ -4,7 +4,9 @@
         <h5 class="mb-0">Tambah Item Penjaminan Mutu</h5>
     </div>
     <div class="card-body">
-        {!! Form::open(['route' => 'penjaminan-mutu.store', 'method' => 'POST']) !!}
+        <form action="/penjaminan-mutu" method="POST" enctype="multipart/form-data">
+        @csrf
+        {{-- {!! Form::open(['route' => 'penjaminan-mutu.store', 'method' => 'POST']) !!} --}}
         <div class="mb-3">
             <label class="text-danger">*</label>
             {!! Form::label('nama', 'Nama', ['class' => 'form-label']); !!}
@@ -17,9 +19,20 @@
             </div>
             <div class="form-text">* keterangan penjaminan mutu, misal : sop adalah ...</div>
         </div>
+        <div class="mb-3">
+            <label for="icon" class="form-label @error('icon') is-invalid @enderror">Icon</label>
+            <img class="img-preview img-fluid mb-3 col-sm-5">
+            <input class="form-control" type="file" id="icon" name="icon" onchange="previewImage()">
+            @error('icon')
+                <div class="invalid-feedback">
+                    {{$message}}
+                </div>
+            @enderror
+        </div>
 
         <button type="submit" class="btn btn-primary">Kirim</button>
-        {!! Form::close() !!}
+        </form>
+        {{-- {!! Form::close() !!} --}}
     </div>
 </div>
 
