@@ -37,7 +37,7 @@
                             @endif
                         </td>
                         <td>
-                            @if($user->roles->first()->name != 'admin')
+                            <!-- @if($user->roles->first()->name != 'admin') -->
                             <a class="btn btn-sm btn-primary mx-1" href="{{ route('user.edit', $user->id) }}">
                                 <i class="bx bx-edit-alt me-1"></i> Edit
                             </a>
@@ -48,7 +48,7 @@
                                 </button>
                                 {!! Form::close() !!}
                             </div>
-                            @endif
+                            <!-- @endif -->
                         </td>
                     </tr>
                 @endforeach
