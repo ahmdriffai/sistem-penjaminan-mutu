@@ -41,11 +41,14 @@
                                 <i class="bx bx-edit-alt me-1"></i> Edit
                             </a>
                             <div>
-                                {!! Form::open(['route' => ['user.destroy', $user->id], 'method' => 'DELETE']) !!}
-                                <button type="submit" class="btn btn-sm btn-danger delete-confirm">
-                                    <i class="bx bx-trash me-1"></i> Delete
-                                </button>
-                                {!! Form::close() !!}
+                                <!-- {!! Form::open(['route' => ['user.destroy', $user->id], 'method' => 'DELETE']) !!} -->
+                                <!-- <button type="submit" class="btn btn-sm btn-info delete-confirm">
+                                    <i class="bx bx-user me-1"></i> Lupa password
+                                </button> -->
+                                <!-- {!! Form::close() !!} -->
+                                <a href="#" class="btn btn-sm btn-info delete-confirm">
+                                    <i class="bx bx-user me-1"></i> Lupa password
+                                </a>
                             </div>
                         </td>
                     </tr>
