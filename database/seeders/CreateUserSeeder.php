@@ -45,7 +45,7 @@ class CreateUserSeeder extends Seeder
 //        $dosen->dosen()->save($dosenObj);
 
         $roleAdmin = Role::create(['name' => 'admin']);
-//        $roleDosen = Role::create(['name' => 'dosen']);
+        $roleDosen = Role::create(['name' => 'dosen']);
 
 
         $admin->assignRole([$roleAdmin->id]);
