@@ -70,6 +70,10 @@ class FileDokumenServiceImpl implements FileDokumenService
 
         try {
             $dataFile = $this->uploads($file, 'file-dokumen/');
+            // dd($file->getSize());
+            if ($file->getSize() > 1024000) {
+                throw new InvariantException("ukuran file terlalu besar");
+            }
             $fileUrl = asset('storage/'. $dataFile['filePath']);
             $filePath = public_path('storage/'. $dataFile['filePath']);
             $fileFormat = $dataFile['fileType'];

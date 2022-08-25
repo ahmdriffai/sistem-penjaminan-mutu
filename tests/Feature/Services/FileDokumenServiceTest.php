@@ -83,7 +83,7 @@ class FileDokumenServiceTest extends TestCase
     {
         $fileDokumen = FileDokumen::factory()->create();
 
-        $file = UploadedFile::fake()->create('file.pdf');
+        $file = UploadedFile::fake()->create('file.pdf', 1000);
 
         $result = $this->fileDokumenService->addFile($file, $fileDokumen->id);
 
