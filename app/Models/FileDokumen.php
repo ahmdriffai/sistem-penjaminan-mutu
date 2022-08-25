@@ -11,4 +11,9 @@ class FileDokumen extends Model
 
     protected $table = 'file_dokumen';
     protected $guarded = ['id'];
+
+
+    public function dokumenMutu(){
+        return $this->belongsTo(DokumenMutu::class);
+    }
 }

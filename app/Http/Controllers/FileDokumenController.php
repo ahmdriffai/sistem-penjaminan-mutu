@@ -34,7 +34,7 @@ class FileDokumenController extends Controller
 
         FileDokumen::create($validatedData); 
 
-        return redirect('/dokumen-mutu')->with('success','File berhasil ditambahkan!');
+        return redirect()->back()->with('success','File berhasil ditambahkan!');
         // $dokumenMutuId = $request->input('dokumen_mutu_id');
         // $file = $request->file('file');
         // try {
@@ -53,7 +53,8 @@ class FileDokumenController extends Controller
         }
         FileDokumen::destroy($fileDokumen->id); 
 
-        return redirect('/dokumen-mutu')->with('success','File berhasil dihapus!');
+        return redirect()->back()->with('success','File berhasil dihapus!');
+
 
         // try {
         //     $this->fileDokumenService->deleteFile($id);

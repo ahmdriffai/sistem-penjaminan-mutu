@@ -127,13 +127,19 @@ class PenjaminanMutuController extends Controller
         // }
     }
 
-    public function destroy($id)
+    public function destroy(PenjaminanMutu $penjaminanMutu)
     {
-        try {
-            $this->penjaminanMutuService->delete($id);
-            return redirect()->back()->with('success', 'Penjaminan mutu berhasil dihapus');
-        }catch (InvariantException $exception) {
-            return redirect()->back()->with('error', 'Penjaminan mutu gagal dihapus');
+        if ($penjaminanMutu->icon) {
+            Storage::delete($penjaminanMutu->icon);
         }
+        PenjaminanMutu::destroy($penjaminanMutu->id); 
+
+        return redirect('/penjaminan-mutu')->with('success','Penjaminan mutu berhasil dihapus!');
+        // try {
+        //     $this->penjaminanMutuService->delete($id);
+        //     return redirect()->back()->with('success', 'Penjaminan mutu berhasil dihapus');
+        // }catch (InvariantException $exception) {
+        //     return redirect()->back()->with('error', 'Penjaminan mutu gagal dihapus');
+        // }
     }
 }

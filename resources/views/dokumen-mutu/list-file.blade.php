@@ -33,15 +33,22 @@
                         <td><strong>#</strong></td>
                         <td>{{ $value->created_at }}</td>
                         <td>{{ $dokumenMutu->tahun }}</td>
-                        <td>{{ $value->nama_file }}</td>
+                        <td>{{ $value->nama_file }} {{$value->id}}</td>
                         <td>
                             <a href="../storage/{{ $value->file }}" target="_blank">Preview</a>
                         </td>
                         @role('admin')
                         <td>
                             <div>
+                                {{-- <form action="/file-dokumen/{{$value->id}}" method="POST" class="d-inline" enctype="multipart/form-data">
+                                    @method('delete')
+                                    @csrf
+                                    <button type="submit" class="btn btn-sm btn-danger delete-confirm">
+                                        <i class="bx bx-trash me-1"></i> Delete
+                                    </button>
+                                </form> --}}
                                 {!! Form::open(['route' => ['file-dokumen.destroy', $value->id], 'method' => 'DELETE']) !!}
-                                <button type="submit" class="btn btn-sm btn-danger">
+                                <button type="submit" class="btn btn-sm btn-danger delete-confirm">
                                     <i class="bx bx-trash me-1"></i> Delete
                                 </button>
                                 {!! Form::close() !!}
