@@ -35,7 +35,7 @@
                         <td>{{ $dokumenMutu->tahun }}</td>
                         <td>{{ $value->nama_file }}</td>
                         <td>
-                            <a href="../storage/{{ $value->file }}" target="_blank">Preview</a>
+                            <a href="{{ $value->file_url }}">Preview</a>
                         </td>
                         @role('admin')
                         <td>
