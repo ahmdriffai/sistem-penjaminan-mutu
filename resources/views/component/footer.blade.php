@@ -75,7 +75,7 @@
     <!-- Copyright -->
     <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
         © 2022 Copyright:
-        <a class="text-reset fw-bold" href="https://fksp-unsiq.ac.id">FKPS UNSIQ</a>
+        <a class="text-reset fw-bold" href="https://fksp-unsiq.ac.id">FKSP UNSIQ</a>
     </div>
     <!-- Copyright -->
 </footer>

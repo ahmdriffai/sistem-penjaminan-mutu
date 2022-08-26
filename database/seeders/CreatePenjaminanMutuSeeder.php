@@ -15,12 +15,14 @@ class CreatePenjaminanMutuSeeder extends Seeder
      */
     public function run()
     {
-        $list = ['Manual Mutu', 'Standar Operasional Prosedur', 'Intruksi Kerja'];
+        $list = ['Intruksi Kerja','Standar Operasional Prosedur', 'Manual Mutu'];
+        $icon = ['IK.png','sop.png', 'MM.png'];
 
-        foreach ($list as $value) {
+        for ($i=0; $i < count($list) ; $i++) { 
             $penjaminanMutu = new PenjaminanMutu([
-                'nama' => $value,
+                'nama' => $list[$i],
                 'keterangan' => '-',
+                'icon' => $icon[$i],
             ]);
             $penjaminanMutu->save();
         }

@@ -7,16 +7,24 @@
             </p>
             <div class="row g-5">
                 @foreach($penjaminanMutu as $value)
-                    <div class="col-md-12">
-                        <a href="{{ route('welcome.dokumen-mutu', $value->id) }}" class="nav-link">
-                            <div class="card card-berita shadow text-center p-5">
-                                <div class="bg-white">
-                                    <i class="far fa-file-archive text-primary" style="font-size: 50px"></i>
-                                </div>
-                                <h5 class="card-title m-3">{{ $value->nama }}</h5>
-                            </div>
-                        </a>
+                <div class="col-md">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ asset('pm-icon/' . $value->icon) }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ $value->nama }}</h5>
+                            <p class="card-text">{{ $value->keterangan }}</p>
+                            <a href="{{ route('welcome.dokumen-mutu', $value->id) }}" class="btn btn-primary">Detail</a>
+                        </div>
                     </div>
+                    <!-- <a href="{{ route('welcome.dokumen-mutu', $value->id) }}" class="nav-link">
+                        <div class="card card-berita shadow text-center p-5">
+                            <div class="bg-white">
+                                <i class="far fa-file-archive text-primary" style="font-size: 50px"></i>
+                            </div>
+                            <h5 class="card-title m-3">{{ $value->nama }}</h5>
+                        </div>
+                    </a> -->
+                </div>
                 @endforeach
             </div>
         </div>
