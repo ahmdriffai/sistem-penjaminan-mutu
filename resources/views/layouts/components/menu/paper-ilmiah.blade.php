@@ -19,13 +19,13 @@
 <li class="menu-item {{ Route::is('paper-ilmiah.*') ? 'active' : '' }}">
     <a href="{{ route('paper-ilmiah.index') }}" class="menu-link text-white">
         <i class="menu-icon tf-icons bx bx-file"></i>
-        <div data-i18n="Analytics">Paper Ilmiah</div>
+        <div data-i18n="Analytics">Jurnal Ilmiah</div>
     </a>
 </li>
 
-<li class="menu-item">
+<!-- <li class="menu-item">
     <a href="#" class="menu-link text-white">
         <i class="menu-icon tf-icons bx bx-file"></i>
         <div data-i18n="Analytics">Laporan Pembelajaran</div>
     </a>
-</li>
+</li> -->

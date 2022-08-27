@@ -49,7 +49,7 @@ class DokumenMutuServiceImpl implements DokumenMutuService
         $paginate = DokumenMutu::where('kode_dokumen', 'like', '%' . $key . '%')
             ->orWhere('nama', 'like', '%' . $key . '%')
             ->orderBy('penjaminan_mutu_id', 'ASC')
-            ->orderBy('created_at', 'DESC')
+            ->orderBy('created_at', 'ASC')
             ->paginate($size);
 
         return $paginate;
