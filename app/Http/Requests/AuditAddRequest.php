@@ -27,7 +27,7 @@ class AuditAddRequest extends FormRequest
             'nama' => 'required',
             'tahun' => 'required',
             'semester' => 'required',
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf|file|max:1024'
+            'file' => 'required|mimes:csv,txt,xlx,xls,pdf|file|max:5000'
         ];
     }
 }
