@@ -26,7 +26,7 @@ class PengumumanAddRequest extends FormRequest
         return [
             'judul' => 'required',
             'isi' => 'required',
-            'file' => 'required',
+            'file' => 'required|mimes:csv,txt,xlx,xls,pdf|file|max:1024',
         ];
     }
 }
