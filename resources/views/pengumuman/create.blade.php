@@ -32,7 +32,6 @@
                             {!! Form::file('file' ,['class' => 'form-control']); !!}
                         </div>
                     </div>
-
                     <button type="submit" class="btn btn-primary">Kirim</button>
                     {!! Form::close() !!}
                 </div>

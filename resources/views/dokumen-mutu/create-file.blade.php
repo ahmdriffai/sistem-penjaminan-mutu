@@ -4,7 +4,7 @@
         {!! Form::open(['route' => 'file-dokumen.store', 'method' => 'POST', 'files' => true ,'class' => 'modal-content']) !!}
         {!! Form::hidden('dokumen_mutu_id', $dokumenMutu->id); !!}
         <div class="modal-header">
-                <h5 class="modal-title" id="backDropModalTitle">Modal title</h5>
+                <h5 class="modal-title" id="backDropModalTitle">File Upload</h5>
                 <button
                     type="button"
                     class="btn-close"
@@ -21,11 +21,10 @@
                 </div>
                 <div class="row">
                     <div class="col mb-3">
-                        {!! Form::label('file', 'File', ['class' => 'form-label']); !!}
-                        {!! Form::file('file' ,['class' => 'form-control']); !!}
+                        {!! Form::label('file_url', 'File', ['class' => 'form-label']); !!}
+                        {!! Form::file('file_url' ,['class' => 'form-control']); !!}
                     </div>
                 </div>
-
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
