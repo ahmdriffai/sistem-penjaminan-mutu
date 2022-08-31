@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Exceptions\InvariantException;
 use App\Http\Requests\PengumumanAddRequest;
+use App\Http\Requests\PengumumanUpdateRequest;
 use App\Models\Pengumuman;
 use App\Services\PengumumanService;
 use Illuminate\Http\Request;
@@ -63,15 +64,35 @@ class PengumumanController extends Controller
     public function edit($id)
     {
         //
+        $title = $this->title;
+        $pengumuman = Pengumuman::find($id);
+        return response()->view('pengumuman.edit', compact('title', 'pengumuman'));
     }
 
-    public function update(Request $request, $id)
+    public function update(PengumumanUpdateRequest $request, $id)
     {
         //
+        $file = $request->file('file');
+
+        try {
+            $result = $this->pengumumanService->edit($request, $id);
+            if ($file != null) {
+                $this->pengumumanService->editFile($id, $file);
+            }
+            return response()->redirectTo(route('pengumuman.index'))->with('success', 'Berhasil mengubah pengumuman');
+        }catch (InvariantException $exception) {
+            return redirect()->back()->with('error', $exception->getMessage())->withInput($request->all());
+        }
     }
 
     public function destroy($id)
     {
         //
+        try {
+            $this->pengumumanService->delete($id);
+            return response()->redirectTo(route('pengumuman.index'))->with('success', 'Berhasil menghapus pengumuman');
+        }catch (InvariantException $exception) {
+            return redirect()->back()->with('error', $exception->getMessage());
+        }
     }
 }

@@ -4,6 +4,7 @@ namespace App\Services\Eloquent;
 
 use App\Exceptions\InvariantException;
 use App\Helper\Media;
+use App\Http\Requests\PengumumanUpdateRequest;
 use App\Models\Pengumuman;
 use App\Services\PengumumanService;
 use Illuminate\Pagination\LengthAwarePaginator;
@@ -50,10 +51,12 @@ class PengumumanServiceImpl implements PengumumanService
         return $pengumuman;
     }
 
-    function edit(int $id, string $judul, string $isi): Pengumuman
+    function edit(PengumumanUpdateRequest $request, int $id): Pengumuman
     {
         $pengumuman = Pengumuman::find($id);
-
+        $judul = $request->input('judul');
+        $isi = $request->input('isi');
+        
         try {
             $pengumuman->judul = $judul;
             $pengumuman->isi = $isi;

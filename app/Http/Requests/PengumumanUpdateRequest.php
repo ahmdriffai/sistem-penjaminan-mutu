@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FileDokumenAddRequest extends FormRequest
+class PengumumanUpdateRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,8 +24,8 @@ class FileDokumenAddRequest extends FormRequest
     public function rules()
     {
         return [
-            'nama_file' => 'required',
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf|file|max:2024',
+            'judul' => 'required',
+            'isi' => 'required',
         ];
     }
 }
