@@ -22,7 +22,6 @@
                     </div>
                 @endforeach
             </div>
-            <a class="btn btn-success btn-sm mt-5">Lainya <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
         </div>
     </div>
 </div>
