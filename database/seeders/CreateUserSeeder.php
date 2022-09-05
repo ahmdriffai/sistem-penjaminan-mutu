@@ -19,19 +19,19 @@ class CreateUserSeeder extends Seeder
     {
         $dosenObjAdmin = Dosen::factory()->create([
             'nidn' => '0613097503',
-            'nama' => 'Insan Mahmud, SE, M.Si',
+            'nama' => 'Slamet',
             'tempat_lahir' => 'Wonosobo',
             'tanggal_lahir' => null,
             'nik' => null,
             'jenis_kelamin' => 'L',
             'nomer_hp' => null,
-            'alamat' => 'Wonobungkah RT 8 RW 5 Kelurahan Jlamprang kecamatan Wonosobo',
+            'alamat' => 'Dieng',
         ]);
 //        $dosenObj = Dosen::factory()->create();
 
         $admin = User::create([
-            'name' => 'Insan Mahmud, SE, M.Si',
-            'email' => 'insanmahmud@unsiq.ac.id',
+            'name' => 'Slamet SE, M.Si',
+            'email' => 'slamet@unsiq.ac.id',
             'password' => bcrypt('rahasia'),
         ]);
 

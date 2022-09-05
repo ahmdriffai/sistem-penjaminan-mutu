@@ -1,7 +1,8 @@
-<aside id="layout-menu" class="layout-menu menu-vertical menu text-white" style="background-color:#00BFA6;color:#fff;">
+<aside id="layout-menu" class="layout-menu menu-vertical menu text-white" style="background-color:#930909;color:#fff;">
     <div class="app-brand demo">
         <a href="home" class="app-brand-link">
               <span class="app-brand-logo demo">
+                
               </span>
             <span class="app-brand-text demo menu-text text-white fw-bolder ms-2 text-uppercase">SPMI</span>
         </a>

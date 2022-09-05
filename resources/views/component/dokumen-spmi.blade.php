@@ -1,9 +1,9 @@
 <div class="container my-5 pb-5">
     <div class="row mt-5 gx-5 gy-3">
         <div class="col-md-12">
-            <h3 class="text-success text-center mb-5"><i class="fas fa-file-archive"></i> Dokumen SPMI</h3>
+            <h3 class="text-danger text-center mb-5"><i class="fas fa-file-archive"></i> Dokumen SPMI</h3>
             <p class="text-justify mb-4">
-                Agar SPMI ini bisa diimplemetasikan, disusun standar mutu akademik FKSP-UNSIQ yang merupakan standar pendidikan tinggi yang ditetapkan oleh FKSP-UNSIQ sebagai acuan dalam penyelenggaraan proses akademik. Evaluasi proses akademik ini akan dilakukan melalui asesmen prodi dan fakultas/sekolah.
+                Agar SPMI ini bisa diimplemetasikan, disusun standar mutu akademik FEB-UNSIQ yang merupakan standar pendidikan tinggi yang ditetapkan oleh FEB-UNSIQ sebagai acuan dalam penyelenggaraan proses akademik. Evaluasi proses akademik ini akan dilakukan melalui asesmen prodi dan fakultas/sekolah.
             </p>
             <div class="row g-5">
                 @foreach($penjaminanMutu as $value)

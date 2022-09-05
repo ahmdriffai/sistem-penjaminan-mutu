@@ -1,8 +1,8 @@
 <nav class="navbar navbar-expand-lg shadow navbar-light bg-white py-3 bg-light">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            <img src="{{ asset('fksp.png') }}" class="img-fluid me-3" width="50px">
-            <strong>SPMI FKSP UNSIQ</strong>
+            <img src="{{ asset('feb.png') }}" class="img-fluid me-3" width="50px">
+            <strong>SPMI FEB UNSIQ</strong>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
@@ -24,7 +24,7 @@
                     <a class="nav-link {{ Route::is('welcome') ? 'active' : '' }}" aria-current="page" href="#">Home</a>
                 </li>
             </ul>
-            <a href="/login" class="btn btn-outline-success px-4">Login</a>
+            <a href="/login" class="btn btn-outline-danger px-4">Login</a>
         </div>
     </div>
 </nav>

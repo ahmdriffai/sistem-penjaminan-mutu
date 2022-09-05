@@ -17,6 +17,7 @@
         }
     </style>
     @yield('style')
+    <link rel="icon" type="image/x-icon" href="{{asset('feb.png')}}" />
     <title>Sistem Penjaminan Mutu Internal</title>
 </head>
 <body>

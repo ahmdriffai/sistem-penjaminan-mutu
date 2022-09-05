@@ -1,82 +1,53 @@
 <!-- Footer -->
-<footer class="text-center text-lg-start bg-dark text-muted" style="margin-top: 200px">
-    <!-- Section: Social media -->
-    <section
-        class="d-flex justify-content-center justify-content-lg-between p-4 border-bottom"
-    >
-        <!-- Left -->
-        <div class="me-5 d-none d-lg-block">
-            <span>Get connected with us on social networks:</span>
-        </div>
-        <!-- Left -->
+<footer class="text-white text-center text-md-start mt-5" style="background-color: #161616">
+    <div class="container-fluid p-4">
+        <div class="row d-flex justify-content-center">
+            <div class="col-lg-11 p-3">
+                <div class="row d-flex justify-content-between">
+                    <div class="col-lg-3 col-md-12 mb-4 mb-md-0">
+                        <img src="{{ asset('feb-putih.png') }}" class="d-block" style="height: 100px; width: 100px" alt="" />
+                        <hr style="border: 1px solid #b6b7b7" />
+                        <h5 class="h5" style="color: #b6b7b7">Fakultas Ekonomi dan Bisnis</h5>
+                        <p style="color: #505050">Universitas Sains Al Qur’an Jawa Tengah di Wonosobo</p>
+                    </div>
 
-        <!-- Right -->
-        <div>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-facebook-f"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-twitter"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-google"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-instagram"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-linkedin"></i>
-            </a>
-            <a href="" class="me-4 text-reset">
-                <i class="fab fa-github"></i>
-            </a>
-        </div>
-        <!-- Right -->
-    </section>
-    <!-- Section: Social media -->
+                    <div class="col-lg-4 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase">Tentang Fakultas</h5>
 
-    <!-- Section: Links  -->
-    <section class="">
-        <div class="container text-center text-md-start mt-5">
-            <!-- Grid row -->
-            <div class="row mt-3">
-                <!-- Grid column -->
-                <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
-                    <!-- Content -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        Fakultas Komunikasi dan Sosial Politik
-                    </h6>
+                        <p style="color: #505050">Sejarah Feb Unsiq</p>
+                    </div>
+
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <h5 class="text-uppercase mb-3">Kontak</h5>
+
+                        <div class="text-right" style="color: #505050">
+                            <p class="text-right">Jl. KH. Hasyim Asy'ari Km. 03, Kalibeber, Kec. Mojotengah, Kab. Wonosobo,</p>
+                            <p class="text-right">Jawa Tengah - 56351</p>
+                            <p class="text-right">Telp. : (0286) ******</p>
+                            <p class="text-right">Fax. : (0286) *******</p>
+                        </div>
+                    </div>
                 </div>
-                <!-- Grid column -->
-
-                <!-- Grid column -->
-                <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
-                    <!-- Links -->
-                    <h6 class="text-uppercase fw-bold mb-4">
-                        Contact
-                    </h6>
-                    <p><i class="fas fa-home me-3"></i>
-                        JL. Raya Kalibeber Km.03 Wonosobo, Mojotengah, Kalibeber, Kec. Mojotengah, Kabupaten Wonosobo, Jawa Tengah 56351
-                    </p>
-                    <p>
-                        <i class="fas fa-envelope me-3"></i>
-                        info@example.com
-                    </p>
-{{--                    <p><i class="fas fa-phone me-3"></i> + 01 234 567 88</p>--}}
-{{--                    <p><i class="fas fa-print me-3"></i> + 01 234 567 89</p>--}}
-                </div>
-                <!-- Grid column -->
             </div>
-            <!-- Grid row -->
         </div>
-    </section>
-    <!-- Section: Links  -->
-
-    <!-- Copyright -->
-    <div class="text-center p-4" style="background-color: rgba(0, 0, 0, 0.05);">
-        © 2022 Copyright:
-        <a class="text-reset fw-bold" href="https://fksp-unsiq.ac.id">FKSP UNSIQ</a>
     </div>
-    <!-- Copyright -->
+    <div class="container-fluid">
+        <div class="row d-flex justify-content-center" style="background-color: #343434">
+            <div class="col-lg-11 d-flex justify-content-between align-items-center">
+                <div class="text-left p-3" style="color: #aeaeae">Copyright All Right Reserved 2022, Faculty of Economics and Business, UNSIQ</div>
+                <div class="d-flex justify-content-between align-items-center">
+                    <a href="" class="icon-footer">
+                        <i class="fa fa-facebook-f p-3"></i>
+                    </a>
+                    <a href="" class="icon-footer">
+                        <i class="fa fa-instagram p-3"></i>
+                    </a>
+                    <a href="" class="icon-footer">
+                        <i class="fa fa-twitter p-3" aria-hidden="true"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
 </footer>
-<!-- Footer -->
+<!-- Akhir Footer -->
