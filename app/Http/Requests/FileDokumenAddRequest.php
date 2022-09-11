@@ -25,7 +25,7 @@ class FileDokumenAddRequest extends FormRequest
     {
         return [
             'nama_file' => 'required',
-            'file' => 'required|mimes:csv,txt,xlx,xls,pdf|file|max:2024',
+            'file' => 'required|mimes:csv,txt,xlx,xls,pdf|file|max:5000',
         ];
     }
 }
