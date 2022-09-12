@@ -31,7 +31,7 @@ class PenjaminanMutuServiceImpl implements PenjaminanMutuService
     function list(string $key = '', int $size = 10): LengthAwarePaginator
     {
         $penjaminanMutu = PenjaminanMutu::where('nama', 'like', '%' . $key . '%')
-            ->orderBy('created_at', 'ASC')->paginate($size);
+            ->orderBy('id', 'ASC')->paginate($size);
 
         return $penjaminanMutu;
     }
