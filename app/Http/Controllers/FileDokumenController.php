@@ -24,6 +24,7 @@ class FileDokumenController extends Controller
             $this->fileDokumenService->addFile($file, $fileDokumen->id);
             return redirect()->back()->with('success', 'File berhasil ditambahkan');
         }catch (InvariantException $exception) {
+            dispatch(new \App\Jobs\SendEmailJob("ahmmd.riffai@gmail.com", "error"));
             return redirect()->back()->with('error', 'File gagal ditambahkan')->withInput($request->all());
         }
     }
