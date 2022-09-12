@@ -37,9 +37,7 @@
                             @endif
                         </td>
                         <td>
-                            <a class="btn btn-sm btn-primary mx-1" href="{{ route('user.edit', $user->id) }}">
-                                <i class="bx bx-edit-alt me-1"></i> Edit
-                            </a>
+                            
                             <div>
                                 <!-- {!! Form::open(['route' => ['user.destroy', $user->id], 'method' => 'DELETE']) !!} -->
                                 <!-- <button type="submit" class="btn btn-sm btn-info delete-confirm">
