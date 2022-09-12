@@ -70,11 +70,11 @@
                         <label class="text-danger">*</label>
                         {!! Form::label('kriteria', 'Kriteria Jurnal', ['class' => 'form-label']); !!}
                         {!! Form::select('kriteria', [
-                            'Jurnal Internasional Bereputasi',
-                             'Jurnal Internasioal',
-                             'Jurnal Nasional Teragretasi',
-                             'Jurnal Nasional',
-                             'Jurnal Lokal',
+                            'Jurnal Internasional Bereputasi' => 'Jurnal Internasional Bereputasi',
+                             'Jurnal Internasioal' => 'Jurnal Internasional',
+                             'Jurnal Nasional Teragretasi' => 'Jurnal Nasional Teragretasi',
+                             'Jurnal Nasional' => 'Jurnal Nasional',
+                             'Jurnal Lokal' => 'Jurnal Lokal',
                              ], $paperIlmiah->kriteria ,['class' => 'form-control', 'placeholder' => '-- Ktiteria Jurnal --']); !!}
                     </div>
 
