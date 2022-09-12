@@ -12,6 +12,7 @@ use App\Services\UserService;
 use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Str;
 
 class UserServiceImpl implements UserService
 {
@@ -22,7 +23,7 @@ class UserServiceImpl implements UserService
 
         $email = $request->input('email');
         $roles = $request->input('roles');
-        $password = uniqid();
+        $password = Str::random(5);
 
         $hashPassword = Hash::make($password);
 
