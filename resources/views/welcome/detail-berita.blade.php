@@ -22,7 +22,7 @@
     <div class="col-md-4">
         <div class="card border-0 shadow border">
             <div class="card-body">
-                <h5><i class="fa fa-bullhorn"></i> Berita Terpopuler</h5>
+                <h5><i class="fa fa-bullhorn"></i> Berita Terkini</h5>
                 <ul class="list-group list-group-flush">
                     @foreach($listBerita as $value)
                         <li class="list-group-item">
@@ -60,7 +60,7 @@
                 </div>
             @endforeach
         </div>
-        <a class="btn btn-success btn-sm mt-5">Lainya <i class="fa fa-arrow-right" aria-hidden="true"></i></a>
+       
     </div>
 </div>
 
