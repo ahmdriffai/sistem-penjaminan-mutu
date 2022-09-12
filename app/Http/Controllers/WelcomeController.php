@@ -21,7 +21,7 @@ class WelcomeController extends Controller
     public function index() {
         $pengumuman = \App\Models\Pengumuman::paginate(3);
         $berita = \App\Models\Berita::orderBy('created_at', 'DESC')->paginate(10);
-        $penjaminanMutu = \App\Models\PenjaminanMutu::orderBy('created_at', 'DESC')->paginate(10);
+        $penjaminanMutu = \App\Models\PenjaminanMutu::orderBy('id', 'DESC')->paginate(100);
         return response()->view('welcome.index' ,compact('pengumuman', 'berita', 'penjaminanMutu'));
     }
 
