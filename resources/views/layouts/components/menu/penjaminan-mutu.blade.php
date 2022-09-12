@@ -19,7 +19,7 @@
 @endrole
 
 
-@php($penjaminanMutu = \App\Models\PenjaminanMutu::orderBy('created_at', 'DESC')->paginate(100))
+@php($penjaminanMutu = \App\Models\PenjaminanMutu::orderBy('name', 'ASC')->paginate(100))
 
 @foreach($penjaminanMutu as $value)
 <li class="menu-item">
