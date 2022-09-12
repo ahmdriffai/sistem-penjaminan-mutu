@@ -10,6 +10,9 @@
             <p>
                 {!! $pengumuman->isi !!}
             </p>
+            <p>
+                <a href="{{ $pengumuman->file_url }}" target="_blank">Download dokumen</a>
+            </p>
         </div>
         <div class="col-md-4">
             <div class="card border-0 shadow-sm border">
@@ -18,7 +21,7 @@
                     <ul class="list-group list-group-flush">
                         @foreach($listPengumuman as $value)
                             <li class="list-group-item">
-                                <a href="" class="link-dark text-capitalize"><strong class="fw-light">{{ $value->judul }}</strong></a>
+                                <a href="{{ route('detail-pengumuman', $value->id) }}" class="link-dark text-capitalize"><strong class="fw-light">{{ $value->judul }}</strong></a>
                                 <br>
                                 <small class="text-black-50 fw-light"><i class="fa fa-calendar me-3"></i>{{ date('d M, Y', strtotime($value->created_at)) }}</small>
                             </li>
